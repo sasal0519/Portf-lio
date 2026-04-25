@@ -40,51 +40,7 @@ O layout valoriza:
 - `Habilidades`: competências técnicas e profissionais
 - `Contato`: canais para conexão profissional
 
-## Como visualizar
 
-Como o projeto é estático, basta abrir o arquivo `index.html` no navegador.
-
-Se preferir rodar com um servidor local simples:
-
-```bash
-python3 -m http.server 8000
-```
-
-Depois acesse:
-
-```text
-http://localhost:8000
-```
-
-## Como editar
-
-Os estilos e a estrutura principal estão centralizados em [index.html](/home/salomao_felix/professional-portfolio/index.html).
-
-Pontos principais:
-
-- conteúdo textual: edite o HTML das seções
-- identidade visual: ajuste as variáveis em `:root`
-- animações: revise as classes `.reveal` e o script no fim do arquivo
-- imagens: substitua os arquivos em `assets/images/`
-
-## Objetivo do projeto
-
-Este portfólio foi pensado para comunicar:
-
-- clareza profissional
-- repertório técnico em evolução
-- capacidade de transformar experiência prática em soluções com software
-- cuidado com apresentação visual sem perder funcionalidade
-
-## Próximos passos possíveis
-
-- adicionar favicon e metadados sociais mais completos
-- incluir versão em inglês
-- publicar em GitHub Pages, Vercel ou Netlify
-- separar HTML, CSS e JavaScript em arquivos próprios
-- adicionar seção de projetos futuros
-
-## Autor
 
 **Salomão Félix**
 
