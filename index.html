@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfólio pessoal de Salomão Félix, estudante de Engenharia Química com atuação em rotinas administrativas, projetos e desenvolvimento de software com foco em Python, Linux, automação e ProEng.">
+<meta name="theme-color" content="#f4efe6">
+<meta property="og:title" content="Salomão Félix | Portfólio">
+<meta property="og:description" content="Engenharia, operação, documentação e programação aplicadas a problemas reais.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="assets/images/welcome_solar.png">
+<title>Salomão Félix | Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4efe6;
+  --paper:#fffdf8;
+  --ink:#111111;
+  --muted:#4f4a45;
+  --line:#111111;
+  --accent:#ffd84d;
+  --accent-2:#ff6b2c;
+  --accent-3:#2a9d8f;
+  --accent-4:#ef476f;
+  --card:#ffffff;
+  --shadow:8px 8px 0 #111111;
+  --shadow-soft:4px 4px 0 #111111;
+  --border:4px solid #111111;
+  --border-thin:2px solid #111111;
+  --radius:0;
+  --max:1180px;
+}
+
+*,
+*::before,
+*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:"Manrope",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(255,216,77,.42), transparent 28%),
+    radial-gradient(circle at top right, rgba(239,71,111,.18), transparent 22%),
+    repeating-linear-gradient(0deg, rgba(17,17,17,.045) 0 1px, transparent 1px 42px),
+    repeating-linear-gradient(90deg, rgba(17,17,17,.045) 0 1px, transparent 1px 42px),
+    var(--bg);
+  overflow-x:hidden;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.container{
+  width:min(calc(100% - 32px), var(--max));
+  margin:0 auto;
+}
+
+.mono{
+  font-family:"IBM Plex Mono",monospace;
+}
+
+.stamp{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border:var(--border-thin);
+  background:var(--paper);
+  box-shadow:var(--shadow-soft);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.82rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:var(--accent-4);
+  border:2px solid var(--ink);
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:rgba(244,239,230,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:var(--border-thin);
+}
+
+.topbar-inner{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+
+.brand-mark{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:var(--border-thin);
+  background:var(--accent);
+  box-shadow:var(--shadow-soft);
+  font-family:"Archivo Black",sans-serif;
+  font-size:1.1rem;
+}
+
+.brand-copy strong{
+  display:block;
+  font-size:1rem;
+}
+
+.brand-copy span{
+  display:block;
+  font-size:.82rem;
+  color:var(--muted);
+}
+
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+.nav a{
+  text-decoration:none;
+  padding:10px 14px;
+  border:var(--border-thin);
+  background:var(--paper);
+  box-shadow:var(--shadow-soft);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.8rem;
+  text-transform:uppercase;
+}
+
+.hero{
+  padding:42px 0 28px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:24px;
+  align-items:stretch;
+}
+
+.hero-card,
+.panel,
+.timeline-item,
+.gallery-card,
+.contact-card{
+  border:var(--border);
+  background:var(--card);
+  box-shadow:var(--shadow);
+}
+
+.hero-card{
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:auto -80px -80px auto;
+  width:220px;
+  height:220px;
+  background:radial-gradient(circle, rgba(255,216,77,.45), rgba(255,216,77,0));
+  pointer-events:none;
+}
+
+.hero-kicker{
+  margin-bottom:20px;
+}
+
+.hero-title{
+  margin:0;
+  font-family:"Archivo Black",sans-serif;
+  font-size:clamp(2.8rem, 7vw, 6.2rem);
+  line-height:.92;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+
+.hero-title span{
+  display:block;
+}
+
+.hero-subtitle{
+  margin:18px 0 0;
+  max-width:58ch;
+  font-size:1.08rem;
+  line-height:1.75;
+}
+
+.hero-highlight{
+  background:var(--accent);
+  padding:0 .2em;
+  box-shadow:4px 4px 0 var(--ink);
+}
+
+.hero-actions{
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.button{
+  text-decoration:none;
+  padding:14px 18px;
+  border:var(--border-thin);
+  box-shadow:var(--shadow-soft);
+  font-weight:800;
+}
+
+.button.primary{background:var(--accent)}
+.button.secondary{background:var(--paper)}
+
+.hero-metrics{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+}
+
+.metric{
+  padding:16px;
+  border:var(--border-thin);
+  background:#fff7d6;
+}
+
+.metric strong{
+  display:block;
+  font-family:"Archivo Black",sans-serif;
+  font-size:1.7rem;
+  text-transform:uppercase;
+}
+
+.metric span{
+  display:block;
+  margin-top:8px;
+  font-size:.82rem;
+  line-height:1.5;
+  text-transform:uppercase;
+  font-family:"IBM Plex Mono",monospace;
+}
+
+.hero-aside{
+  display:grid;
+  gap:24px;
+}
+
+.banner-panel{
+  padding:18px;
+  background:#f8f5ee;
+}
+
+.window-stack{
+  position:relative;
+  min-height:100%;
+  padding:16px;
+  border:var(--border-thin);
+  background:
+    radial-gradient(circle, rgba(17,17,17,.18) 1.4px, transparent 1.5px) 0 0/12px 12px,
+    #faf8f2;
+}
+
+.window-label{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:8px 12px;
+  border:var(--border-thin);
+  background:#fff;
+  box-shadow:var(--shadow-soft);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.82rem;
+}
+
+.window-main{
+  position:relative;
+  margin-left:auto;
+  width:min(100%, 540px);
+  border:var(--border);
+  background:#fff;
+  box-shadow:10px 10px 0 #111;
+}
+
+.window-bar{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  padding:10px 12px;
+  background:#111;
+}
+
+.window-bar span{
+  width:18px;
+  height:18px;
+  border:2px solid #fff;
+  background:#fff;
+}
+
+.window-grid{
+  padding:22px;
+  min-height:230px;
+  display:grid;
+  gap:16px;
+  background:
+    linear-gradient(to right, rgba(17,17,17,.18) 1px, transparent 1px) 0 0/38px 38px,
+    linear-gradient(to bottom, rgba(17,17,17,.18) 1px, transparent 1px) 0 0/38px 38px,
+    #fff;
+}
+
+.window-name{
+  border:var(--border);
+  padding:18px 14px;
+  background:#fff;
+  text-align:center;
+  box-shadow:6px 6px 0 #111;
+}
+
+.window-name strong{
+  display:block;
+  font-family:"Archivo Black",sans-serif;
+  font-size:clamp(1.6rem, 3.6vw, 3.3rem);
+  line-height:1;
+  text-transform:uppercase;
+}
+
+.window-name span{
+  display:block;
+  margin-top:12px;
+  border:var(--border-thin);
+  padding:10px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.92rem;
+  text-transform:uppercase;
+}
+
+.skill-strip{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+}
+
+.skill-strip div{
+  padding:12px 8px;
+  text-align:center;
+  border:var(--border-thin);
+  background:var(--paper);
+  box-shadow:var(--shadow-soft);
+  font-family:"IBM Plex Mono",monospace;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.mini-panels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.panel{
+  padding:22px;
+}
+
+.panel h2,
+.section-title{
+  margin:0 0 16px;
+  font-family:"Archivo Black",sans-serif;
+  font-size:clamp(1.7rem, 3vw, 2.6rem);
+  text-transform:uppercase;
+  line-height:1;
+}
+
+.panel p,
+.section-copy{
+  margin:0;
+  line-height:1.8;
+  font-size:1rem;
+}
+
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 12px;
+  border:var(--border-thin);
+  box-shadow:var(--shadow-soft);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.82rem;
+  background:#fff;
+}
+
+.chip:nth-child(4n+1){background:#fff1b8}
+.chip:nth-child(4n+2){background:#d9fff2}
+.chip:nth-child(4n+3){background:#ffd7c7}
+.chip:nth-child(4n+4){background:#f8d6df}
+
+.section{
+  padding:34px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:24px;
+  margin-bottom:20px;
+}
+
+.section-head p{
+  max-width:58ch;
+  margin:0;
+  line-height:1.8;
+}
+
+.timeline{
+  display:grid;
+  gap:18px;
+}
+
+.timeline-item{
+  padding:22px;
+}
+
+.timeline-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:start;
+  flex-wrap:wrap;
+}
+
+.timeline-role{
+  margin:0;
+  font-size:1.35rem;
+  font-weight:800;
+}
+
+.timeline-org{
+  margin:.35rem 0 0;
+  font-size:1rem;
+  color:var(--muted);
+}
+
+.timeline-date{
+  padding:8px 12px;
+  border:var(--border-thin);
+  background:#111;
+  color:#fff;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.82rem;
+  text-transform:uppercase;
+}
+
+.timeline-item ul{
+  margin:16px 0 0;
+  padding-left:20px;
+  line-height:1.8;
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:24px;
+}
+
+.project-main{
+  border:var(--border);
+  background:#111;
+  color:#fff;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.project-main img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-bottom:var(--border-thin);
+}
+
+.project-body{
+  padding:22px;
+}
+
+.project-body h3{
+  margin:0 0 10px;
+  font-family:"Archivo Black",sans-serif;
+  font-size:2rem;
+  text-transform:uppercase;
+}
+
+.project-body p{
+  margin:0;
+  line-height:1.8;
+  color:rgba(255,255,255,.88);
+}
+
+.project-aside{
+  display:grid;
+  gap:18px;
+}
+
+.project-note{
+  border:var(--border);
+  background:#fffdf8;
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+
+.project-note h4{
+  margin:0 0 12px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+
+.project-note ul{
+  margin:0;
+  padding-left:18px;
+  line-height:1.8;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+}
+
+.gallery-card{
+  overflow:hidden;
+}
+
+.gallery-card img{
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  border-bottom:var(--border-thin);
+}
+
+.gallery-copy{
+  padding:14px 16px 18px;
+}
+
+.gallery-copy strong{
+  display:block;
+  font-size:1rem;
+  text-transform:uppercase;
+}
+
+.gallery-copy span{
+  display:block;
+  margin-top:8px;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:.94rem;
+}
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.list-card{
+  border:var(--border);
+  background:#fff;
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+
+.list-card h3{
+  margin:0 0 14px;
+  font-family:"Archivo Black",sans-serif;
+  font-size:1.5rem;
+  text-transform:uppercase;
+}
+
+.list-card ul{
+  margin:0;
+  padding-left:18px;
+  line-height:1.9;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:24px;
+}
+
+.contact-card{
+  padding:24px;
+}
+
+.contact-card p{
+  line-height:1.8;
+}
+
+.contact-links{
+  display:grid;
+  gap:12px;
+  margin-top:18px;
+}
+
+.contact-links a,
+.contact-links div{
+  text-decoration:none;
+  padding:14px 16px;
+  border:var(--border-thin);
+  background:#fff;
+  box-shadow:var(--shadow-soft);
+  font-weight:700;
+}
+
+.footer{
+  padding:20px 0 48px;
+}
+
+.footer-box{
+  border:var(--border);
+  box-shadow:var(--shadow);
+  background:#111;
+  color:#fff;
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.footer-box span{
+  font-family:"IBM Plex Mono",monospace;
+  text-transform:uppercase;
+  font-size:.82rem;
+  color:rgba(255,255,255,.82);
+}
+
+@media (max-width: 1040px){
+  .hero-grid,
+  .project-grid,
+  .split,
+  .contact-grid,
+  .mini-panels{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px){
+  .container{
+    width:min(calc(100% - 20px), var(--max));
+  }
+
+  .topbar-inner,
+  .section-head,
+  .timeline-top{
+    align-items:start;
+  }
+
+  .nav{
+    justify-content:flex-start;
+  }
+
+  .hero-card,
+  .panel,
+  .timeline-item,
+  .project-note,
+  .gallery-card,
+  .contact-card,
+  .footer-box{
+    box-shadow:5px 5px 0 #111;
+  }
+
+  .hero-metrics,
+  .skill-strip,
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .window-grid{
+    min-height:auto;
+  }
+
+  .window-name strong{
+    font-size:2.2rem;
+  }
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#topo">
+      <div class="brand-mark">SF</div>
+      <div class="brand-copy">
+        <strong>Salomão Félix</strong>
+        <span>Engenharia + Programação + Open Source</span>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#projeto">Projeto</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div class="hero-kicker stamp"><span class="dot"></span>Disponível para estágio, trainee e colaboração técnica</div>
+        <h1 class="hero-title">
+          <span>Salomão</span>
+          <span>Félix</span>
+        </h1>
+        <p class="hero-subtitle">
+          Estudante de Engenharia Química na UFRN com experiência em rotinas administrativas, organização operacional,
+          documentação e projetos. Hoje concentro minha evolução em <span class="hero-highlight">programação aplicada a problemas reais</span>,
+          com foco em Python, Linux, automação, análise e ferramentas open source.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projeto">Ver projeto em destaque</a>
+          <a class="button secondary" href="https://github.com/sasal0519" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/salom%C3%A3o-f%C3%A9lix-b4b492191/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>1º projeto</strong>
+            <span>ProEng como marco inicial autoral em software</span>
+          </div>
+          <div class="metric">
+            <strong>Python + Linux</strong>
+            <span>Base técnica para desenvolvimento, scripts e automação</span>
+          </div>
+          <div class="metric">
+            <strong>Engenharia</strong>
+            <span>Visão de processo, organização e melhoria contínua</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="banner-panel hero-card">
+          <div class="window-stack">
+            <div class="window-label">github.com/sasal0519</div>
+            <div class="window-main">
+              <div class="window-bar" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="window-grid">
+                <div class="window-name">
+                  <strong>Salomão Félix</strong>
+                  <span>Engenharia Química</span>
+                </div>
+                <div class="skill-strip">
+                  <div>Python</div>
+                  <div>LaTeX</div>
+                  <div>Lua</div>
+                  <div>Linux</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-panels">
+          <div class="panel">
+            <h2>Resumo</h2>
+            <p>
+              Atuo na interseção entre organização, execução e tecnologia. Tenho experiência profissional em ambiente
+              administrativo e de projetos, e transformo essa base em soluções com código, estrutura e documentação.
+            </p>
+          </div>
+          <div class="panel">
+            <h2>Direção</h2>
+            <p>
+              Busco oportunidades em que engenharia e software conversem de forma prática: automação, análise de dados,
+              melhoria de processos, ferramentas internas e produtos técnicos com utilidade real.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="sobre">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="stamp">Sobre</div>
+          <h2 class="section-title">Atuação profissional com base analítica e técnica</h2>
+        </div>
+        <p>
+          Meu percurso começou na formação técnica e evoluiu para a engenharia, passando por operação administrativa,
+          consultoria, coordenação de negócios e organização documental. Essa trajetória me deu uma base sólida para
+          resolver problemas com método, clareza e senso de prioridade.
+        </p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h2>O que me diferencia</h2>
+          <p class="section-copy">
+            Tenho familiaridade com o ambiente real de trabalho, com prazos, processos, comunicação com equipe e necessidade
+            de entregar resultado. Isso faz com que eu enxergue programação não como fim, mas como ferramenta para tornar
+            sistemas mais úteis, operações mais claras e tarefas repetitivas mais eficientes.
+          </p>
+        </div>
+        <div class="panel">
+          <h2>Base técnica</h2>
+          <div class="chip-row">
+            <span class="chip">Python para engenharia e análise de dados</span>
+            <span class="chip">Linux e ferramentas open source</span>
+            <span class="chip">Lua, LaTeX, Git e Bash</span>
+            <span class="chip">Excel avançado e documentação</span>
+            <span class="chip">Gestão da qualidade e produção</span>
+            <span class="chip">Planejamento e organização</span>
+            <span class="chip">Comunicação com equipe</span>
+            <span class="chip">Resolução estruturada de problemas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trajetoria">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="stamp">Trajetória</div>
+          <h2 class="section-title">Experiência e formação</h2>
+        </div>
+        <p>
+          Minha formação une administração e engenharia química, enquanto minha experiência profissional reforça disciplina,
+          organização, atendimento a demandas e visão de negócio.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-top">
+            <div>
+              <h3 class="timeline-role">Arquivista</h3>
+              <p class="timeline-org">Prefeitura Municipal de São José de Mipibu</p>
+            </div>
+            <div class="timeline-date">Maio 2025 — 2026</div>
+          </div>
+          <ul>
+            <li>Organização documental e controle de informações com foco em ordem, rastreabilidade e rotina administrativa.</li>
+            <li>Atuação em processos que exigem atenção a detalhes, padronização e confiabilidade na execução.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-top">
+            <div>
+              <h3 class="timeline-role">Auxiliar Administrativo (SEMURB)</h3>
+              <p class="timeline-org">Prefeitura Municipal de São José de Mipibu</p>
+            </div>
+            <div class="timeline-date">Fev 2024 — 2025</div>
+          </div>
+          <ul>
+            <li>Suporte a rotinas administrativas, organização de fluxo de trabalho e acompanhamento de demandas internas.</li>
+            <li>Contato direto com processos, prazos e necessidades operacionais do setor público.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-top">
+            <div>
+              <h3 class="timeline-role">Coordenador de Negócios / Consultor de Projetos</h3>
+              <p class="timeline-org">NUTEQ — Natal, Rio Grande do Norte</p>
+            </div>
+            <div class="timeline-date">Mar 2022 — Dez 2022</div>
+          </div>
+          <ul>
+            <li>Atuação em frente comercial e consultiva, com visão de negócio, comunicação e organização de entregas.</li>
+            <li>Experiência em projetos e interlocução com necessidades reais de clientes e operação.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-top">
+            <div>
+              <h3 class="timeline-role">Bacharel em Engenharia Química</h3>
+              <p class="timeline-org">Universidade Federal do Rio Grande do Norte — UFRN</p>
+            </div>
+            <div class="timeline-date">Em andamento</div>
+          </div>
+          <ul>
+            <li>Formação voltada a processos, análise técnica, raciocínio quantitativo e melhoria contínua.</li>
+            <li>Interesse especial na interface entre engenharia, documentação, automação e software.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-top">
+            <div>
+              <h3 class="timeline-role">CST em Análise e Desenvolvimento de Sistemas</h3>
+              <p class="timeline-org">Universidade Cruzeiro do Sul</p>
+            </div>
+            <div class="timeline-date">Mar 2026 — Dez 2027</div>
+          </div>
+          <ul>
+            <li>Formação superior focada em desenvolvimento de software, lógica, estrutura de sistemas e evolução técnica em programação.</li>
+            <li>Complementa minha base em engenharia ao fortalecer a transição prática para tecnologia e construção de soluções digitais.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-top">
+            <div>
+              <h3 class="timeline-role">Técnico em Administração</h3>
+              <p class="timeline-org">Escola Estadual Professor Francisco Barbosa</p>
+            </div>
+            <div class="timeline-date">Concluído em Dez 2019</div>
+          </div>
+          <ul>
+            <li>Base em organização, planejamento, execução de rotinas e apoio a processos administrativos.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projeto">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="stamp">Projeto em destaque</div>
+          <h2 class="section-title">ProEng, meu primeiro projeto</h2>
+        </div>
+        <p>
+          O ProEng marca minha entrada prática no desenvolvimento de software. É uma suíte visual para engenharia e gestão,
+          criada para transformar necessidades técnicas em uma ferramenta concreta, navegável e útil.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-main">
+          <img src="assets/images/welcome_solar.png" alt="Tela inicial do ProEng com identidade visual neo-brutalista.">
+          <div class="project-body">
+            <h3>Software com assinatura própria</h3>
+            <p>
+              Desenvolvi o ProEng como um projeto autoral em Python, com proposta clara: reunir modelagem, organização visual,
+              planejamento e estrutura técnica em um ambiente único. Além de ser meu primeiro projeto, ele sintetiza a forma
+              como penso software: funcionalidade, identidade visual forte e utilidade prática.
+            </p>
+          </div>
+        </article>
+
+        <aside class="project-aside">
+          <div class="project-note">
+            <h4>O que o projeto evidencia</h4>
+            <ul>
+              <li>Capacidade de aprender construindo.</li>
+              <li>Interesse em interfaces e experiência de uso.</li>
+              <li>Base em Python orientada a produto técnico.</li>
+              <li>Conexão entre engenharia, documentação e software.</li>
+            </ul>
+          </div>
+          <div class="project-note">
+            <h4>Tecnologias e repertório</h4>
+            <ul>
+              <li>Python como linguagem principal.</li>
+              <li>Linux como ambiente de trabalho.</li>
+              <li>Lua, LaTeX, Git e Bash no ecossistema pessoal de estudo e produção.</li>
+              <li>HTML e CSS para apresentação pública e portfólio.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="stamp">Galeria do ProEng</div>
+          <h2 class="section-title">Evidência visual do trabalho</h2>
+        </div>
+        <p>
+          As telas abaixo mostram partes do projeto e reforçam a linguagem visual neobrutalista que também orienta este portfólio.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <article class="gallery-card">
+          <img src="assets/images/flowsheet_solar.png" alt="Tela do módulo Flowsheet do ProEng.">
+          <div class="gallery-copy">
+            <strong>Flowsheet</strong>
+            <span>Modelagem visual de processos e raciocínio técnico aplicado à engenharia.</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="assets/images/bpmn_solar.png" alt="Tela do módulo BPMN do ProEng.">
+          <div class="gallery-copy">
+            <strong>BPMN</strong>
+            <span>Organização de fluxos, etapas e dependências com clareza visual.</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="assets/images/canvas_solar.png" alt="Tela do módulo Canvas do ProEng.">
+          <div class="gallery-copy">
+            <strong>Canvas</strong>
+            <span>Planejamento estruturado, visão sistêmica e apoio à decisão.</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="assets/images/kanban_solar.png" alt="Tela do módulo Kanban do ProEng.">
+          <div class="gallery-copy">
+            <strong>Kanban</strong>
+            <span>Gestão visual de tarefas e acompanhamento operacional.</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="assets/images/pdca_solar.png" alt="Tela do módulo PDCA do ProEng.">
+          <div class="gallery-copy">
+            <strong>PDCA</strong>
+            <span>Melhoria contínua, organização de etapas e foco em execução.</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="assets/images/script_solar.png" alt="Tela do módulo Script do ProEng.">
+          <div class="gallery-copy">
+            <strong>Script</strong>
+            <span>Programação como ferramenta para ampliar produtividade e autonomia.</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="habilidades">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="stamp">Habilidades</div>
+          <h2 class="section-title">Competências técnicas e profissionais</h2>
+        </div>
+        <p>
+          Minha base mistura capacidade analítica, organização, comunicação e aprendizado técnico contínuo, com atenção especial
+          ao uso de programação para resolver problemas de trabalho.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="list-card">
+          <h3>Programação e ferramentas</h3>
+          <ul>
+            <li>Python para resolução de problemas de engenharia e análise de dados.</li>
+            <li>Linux como ambiente principal de uso e estudo.</li>
+            <li>Lua, LaTeX, Git e Bash como extensões do fluxo de trabalho.</li>
+            <li>HTML e CSS para presença digital e apresentação de projetos.</li>
+            <li>Pacote Office com foco em Word e Excel.</li>
+          </ul>
+        </div>
+        <div class="list-card">
+          <h3>Competências profissionais</h3>
+          <ul>
+            <li>Planejamento e organização para cumprimento de prazos.</li>
+            <li>Liderança e tomada de decisão com senso de prioridade.</li>
+            <li>Comunicação eficiente com equipe e contexto operacional.</li>
+            <li>Persistência, disciplina e aprendizado orientado por prática.</li>
+            <li>Inteligência emocional e frameworks de resolução de problemas.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="list-card">
+        <h3>Certificações</h3>
+        <ul>
+          <li>Lean Seis Sigma Yellow Belt</li>
+          <li>Vendedor de Alta Performance</li>
+          <li>Fundamentos da Gestão de Projetos</li>
+          <li>Fundamentos da Gestão da Qualidade</li>
+          <li>Fundamentos da Gestão da Produção Industrial</li>
+          <li>Licenciamento Ambiental</li>
+          <li>Microsoft Excel 2016 — Avançado</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <h3>Idiomas e objetivo</h3>
+        <ul>
+          <li>Português: língua materna</li>
+          <li>Inglês: nível intermediário (B1)</li>
+          <li>Objetivo profissional: crescer nas áreas administrativa, técnica e de engenharia.</li>
+          <li>Interesse em oportunidades presenciais, remotas ou híbridas com espaço para evolução prática.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="container contact-grid">
+      <div class="contact-card">
+        <div class="stamp">Contato</div>
+        <h2 class="section-title">Vamos construir algo útil</h2>
+        <p>
+          Estou aberto a estágio, trainee, colaboração técnica e oportunidades onde engenharia, organização e programação
+          possam gerar impacto real. Se o desafio envolve estruturar processos, documentar melhor, automatizar rotinas
+          ou transformar uma necessidade técnica em software, essa conversa faz sentido para mim.
+        </p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-links">
+          <a href="mailto:salomaostenioferreira@gmail.com">salomaostenioferreira@gmail.com</a>
+          <div>+55 84 98107-6863</div>
+          <a href="https://www.linkedin.com/in/salom%C3%A3o-f%C3%A9lix-b4b492191/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/sasal0519" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <span>Salomão Félix</span>
+      <span>Engenharia Química • Programação • Open Source</span>
+      <span>Portfólio em HTML com direção neobrutalista</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
