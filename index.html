@@ -911,6 +911,197 @@ a{color:inherit}
   }
 }
 
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress{
+  position:fixed;
+  top:0;left:0;
+  height:5px;
+  background:var(--accent);
+  border-right:2px solid var(--ink);
+  z-index:200;
+  width:0%;
+  transition:width .08s linear;
+  box-shadow:0 0 8px rgba(255,216,77,.7);
+}
+
+/* ── CURSOR SPOTLIGHT ── */
+#cursor-spotlight{
+  position:fixed;
+  pointer-events:none;
+  width:380px;height:380px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,216,77,.09),transparent 68%);
+  transform:translate(-50%,-50%);
+  z-index:0;
+  transition:left .12s ease,top .12s ease;
+}
+
+/* ── BLINKING DOT ── */
+@keyframes dotPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(239,71,111,0);}
+  50%{transform:scale(1.5);box-shadow:0 0 0 6px rgba(239,71,111,.25);}
+}
+.dot{animation:dotPulse 1.8s ease-in-out infinite;}
+
+/* ── SHIMMER ON HERO HIGHLIGHT ── */
+@keyframes shimmerSlide{
+  0%{background-position:-200% 0}
+  100%{background-position:200% 0}
+}
+.hero-highlight{
+  background:linear-gradient(90deg,var(--accent) 30%,#fff7a0 50%,var(--accent) 70%);
+  background-size:200% auto;
+  animation:shimmerSlide 2.8s linear infinite;
+}
+
+/* ── BRAND MARK ENTRANCE ── */
+@keyframes brandSpin{
+  0%{transform:rotate(-25deg) scale(.6);opacity:0}
+  65%{transform:rotate(6deg) scale(1.1);opacity:1}
+  100%{transform:rotate(0) scale(1);opacity:1}
+}
+.brand-mark{animation:brandSpin .9s cubic-bezier(.22,1,.36,1) .2s both;}
+
+/* ── MARQUEE ── */
+@keyframes marqueeScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.marquee-strip{
+  border-top:var(--border-thin);
+  border-bottom:var(--border-thin);
+  background:var(--ink);
+  padding:13px 0;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation:marqueeScroll 28s linear infinite;
+  gap:0;
+}
+.marquee-track span{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.8rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:#fff;
+  padding:0 20px;
+  white-space:nowrap;
+}
+.marquee-track span.sep{
+  color:var(--accent);
+  padding:0 4px;
+}
+.marquee-strip:hover .marquee-track{animation-play-state:paused;}
+
+/* ── TIMELINE BAR FILL ── */
+@keyframes barFill{
+  0%{transform:scaleY(0);transform-origin:top;}
+  100%{transform:scaleY(1);transform-origin:top;}
+}
+.timeline-item::before{transform:scaleY(0);transform-origin:top;}
+.timeline-item.is-visible::before{animation:barFill .7s var(--ease) .1s both;}
+
+/* ── SKILL STRIP BOUNCE IN ── */
+@keyframes skillBounce{
+  0%{transform:translateY(22px) scale(.8);opacity:0}
+  65%{transform:translateY(-5px) scale(1.06);opacity:1}
+  100%{transform:translateY(0) scale(1);opacity:1}
+}
+.skill-strip div{opacity:0;}
+.skill-strip.skills-animated div{animation:skillBounce .55s var(--ease) both;}
+.skill-strip.skills-animated div:nth-child(1){animation-delay:0ms}
+.skill-strip.skills-animated div:nth-child(2){animation-delay:90ms}
+.skill-strip.skills-animated div:nth-child(3){animation-delay:180ms}
+.skill-strip.skills-animated div:nth-child(4){animation-delay:270ms}
+
+/* ── SECTION TITLE GLITCH ── */
+@keyframes glitchReveal{
+  0%{clip-path:inset(90% 0 0 0);transform:skewX(-6deg);}
+  25%{clip-path:inset(0 0 80% 0);transform:skewX(4deg);}
+  50%{clip-path:inset(30% 0 30% 0);transform:skewX(-2deg);}
+  75%{clip-path:inset(0 0 0 0);transform:skewX(1deg);}
+  100%{clip-path:inset(0 0 0 0);transform:skewX(0);}
+}
+.section-title.glitch-active{animation:glitchReveal .55s var(--ease) both;}
+
+/* ── METRIC FLASH ── */
+@keyframes metricCountFlash{
+  0%{color:var(--accent-2);transform:scale(1.12)}
+  100%{color:var(--ink);transform:scale(1)}
+}
+.metric.is-counted strong{animation:metricCountFlash .5s var(--ease) both;}
+
+/* ── GALLERY CARD STAGGER (override reveal for gallery) ── */
+.gallery-card{
+  transform:translateY(44px) scale(.95);
+  transition:opacity .7s var(--ease),transform .7s var(--ease),box-shadow .32s var(--ease);
+}
+.gallery-card.is-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* ── CHIP WIGGLE ON HOVER ── */
+@keyframes chipWiggle{
+  0%,100%{transform:translate(-8px,-8px) rotate(0)}
+  33%{transform:translate(-8px,-8px) rotate(-3deg)}
+  66%{transform:translate(-8px,-8px) rotate(3deg)}
+}
+.chip:hover{animation:chipWiggle .4s var(--ease) both;}
+
+/* ── HERO CARD MOUSE PARALLAX ── */
+.hero-card{transition:transform .32s var(--ease),box-shadow .32s var(--ease),background .32s var(--ease);}
+
+/* ── CONTACT LINK SLIDE ── */
+.contact-links a,
+.contact-links div{
+  position:relative;
+  overflow:hidden;
+}
+.contact-links a::before,
+.contact-links div::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--accent);
+  transform:translateX(-102%);
+  transition:transform .3s var(--ease);
+  z-index:0;
+}
+.contact-links a:hover::before,
+.contact-links div:hover::before{transform:translateX(0);}
+.contact-links a > *,
+.contact-links div > *{position:relative;z-index:1;}
+
+/* ── FOOTER PULSE ── */
+@keyframes footerGlow{
+  0%,100%{box-shadow:8px 8px 0 #111}
+  50%{box-shadow:8px 8px 0 #111,0 0 48px rgba(255,216,77,.22)}
+}
+.footer-box{animation:footerGlow 5s ease-in-out infinite;}
+
+/* ── STAMP HOVER SPIN DOT ── */
+.stamp:hover .dot{animation:dotPulse .3s var(--ease) both,dotPulse 1.8s ease-in-out .3s infinite;}
+
+/* ── REVEAL VARIANTS ── */
+.reveal-left{
+  opacity:0;
+  transform:translateX(-44px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.reveal-left.is-visible{opacity:1;transform:translateX(0);}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(44px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.reveal-right.is-visible{opacity:1;transform:translateX(0);}
+
 @media (max-width: 760px){
   .container{
     width:min(calc(100% - 20px), var(--max));
@@ -996,6 +1187,8 @@ a{color:inherit}
 </style>
 </head>
 <body>
+<div id="scroll-progress" aria-hidden="true"></div>
+<div id="cursor-spotlight" aria-hidden="true"></div>
 <header class="topbar">
   <div class="container topbar-inner">
     <a class="brand" href="#topo">
@@ -1441,21 +1634,118 @@ a{color:inherit}
   </div>
 </footer>
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
+/* ── 1. SCROLL PROGRESS ── */
+const progressBar = document.getElementById("scroll-progress");
+window.addEventListener("scroll", () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  progressBar.style.width = Math.min(pct, 100) + "%";
+}, {passive: true});
+
+/* ── 2. CURSOR SPOTLIGHT ── */
+const spotlight = document.getElementById("cursor-spotlight");
+window.addEventListener("mousemove", e => {
+  spotlight.style.left = e.clientX + "px";
+  spotlight.style.top  = e.clientY + "px";
+}, {passive: true});
+
+/* ── 3. MARQUEE INJECTION (after hero section) ── */
+const heroSection = document.querySelector(".hero");
+const items = ["Python","Linux","Engenharia Química","ProEng","Automação","Open Source","Git","LaTeX","UFRN","HTML & CSS","Bash","Neobrutalismo"];
+const half = items.map(i => `<span>${i}</span><span class="sep">★</span>`).join("");
+const marqueeHTML = `
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">${half}${half}</div>
+</div>`;
+heroSection.insertAdjacentHTML("afterend", marqueeHTML);
+
+/* ── 4. REVEAL OBSERVER (base + left + right) ── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
+      revealObs.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.16,
-  rootMargin: "0px 0px -40px 0px"
+}, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
+
+document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach((el, i) => {
+  el.style.transitionDelay = `${Math.min(i * 45, 260)}ms`;
+  revealObs.observe(el);
 });
 
-document.querySelectorAll(".reveal").forEach((element, index) => {
-  element.style.transitionDelay = `${Math.min(index * 45, 260)}ms`;
-  observer.observe(element);
+/* ── 5. SECTION TITLE GLITCH on reveal ── */
+const titleObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("glitch-active");
+      titleObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll(".section-title").forEach(el => titleObs.observe(el));
+
+/* ── 6. SKILL STRIP BOUNCE ── */
+const skillObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("skills-animated");
+      skillObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll(".skill-strip").forEach(el => skillObs.observe(el));
+
+/* ── 7. METRIC FLASH ── */
+const metricObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-counted");
+      metricObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.8 });
+document.querySelectorAll(".metric").forEach(el => metricObs.observe(el));
+
+/* ── 8. TIMELINE BAR already driven by CSS + is-visible ── */
+/* reveal observer already handles timeline-item since they have .reveal */
+
+/* ── 9. HERO CARD MOUSE PARALLAX ── */
+const heroCard = document.querySelector(".hero-card");
+if (heroCard) {
+  heroCard.addEventListener("mousemove", e => {
+    const rect = heroCard.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) / rect.width  - 0.5;
+    const cy = (e.clientY - rect.top)  / rect.height - 0.5;
+    heroCard.style.transform = `perspective(900px) rotateY(${cx*6}deg) rotateX(${cy*-6}deg) translateZ(4px)`;
+  });
+  heroCard.addEventListener("mouseleave", () => {
+    heroCard.style.transform = "";
+  });
+}
+
+/* ── 10. NAV ACTIVE LINK HIGHLIGHT on scroll ── */
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav a[href^='#']");
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => {
+        a.style.background = "";
+        a.style.boxShadow = "";
+      });
+      const active = document.querySelector(`.nav a[href="#${entry.target.id}"]`);
+      if (active) {
+        active.style.background = "#fff4bf";
+        active.style.boxShadow = "4px 4px 0 #111";
+      }
+    }
+  });
+}, { threshold: 0.5 });
+sections.forEach(s => navObs.observe(s));
+
+/* ── 11. GALLERY stagger override ── */
+document.querySelectorAll(".gallery-card").forEach((card, i) => {
+  card.style.transitionDelay = `${i * 80}ms`;
 });
 </script>
 </body>
