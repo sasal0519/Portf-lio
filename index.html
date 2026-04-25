@@ -204,6 +204,12 @@ a{color:inherit}
   align-items:stretch;
 }
 
+.hero-grid > *,
+.hero-actions > *,
+.hero-metrics > *{
+  min-width:0;
+}
+
 .hero-card,
 .panel,
 .timeline-item,
@@ -244,15 +250,20 @@ a{color:inherit}
 
 .hero-kicker{
   margin-bottom:20px;
+  max-width:min(100%, 38rem);
+  flex-wrap:wrap;
+  line-height:1.55;
 }
 
 .hero-title{
   margin:0;
   font-family:"Archivo Black",sans-serif;
-  font-size:clamp(2.8rem, 7vw, 6.2rem);
-  line-height:.92;
+  font-size:clamp(2.5rem, 6vw, 5.5rem);
+  line-height:.96;
   letter-spacing:.02em;
   text-transform:uppercase;
+  max-width:8ch;
+  text-wrap:balance;
 }
 
 .hero-title span{
@@ -261,9 +272,10 @@ a{color:inherit}
 
 .hero-subtitle{
   margin:22px 0 0;
-  max-width:58ch;
-  font-size:1.09rem;
-  line-height:1.9;
+  max-width:54ch;
+  font-size:1.02rem;
+  line-height:1.82;
+  text-wrap:pretty;
 }
 
 .hero-highlight{
@@ -277,6 +289,7 @@ a{color:inherit}
   display:flex;
   flex-wrap:wrap;
   gap:14px;
+  align-items:stretch;
 }
 
 .button{
@@ -285,6 +298,11 @@ a{color:inherit}
   border:var(--border-thin);
   box-shadow:var(--shadow-soft);
   font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  max-width:100%;
   transition:transform .24s var(--ease), box-shadow .24s var(--ease), background .24s var(--ease);
 }
 
@@ -308,17 +326,20 @@ a{color:inherit}
 .metric strong{
   display:block;
   font-family:"Archivo Black",sans-serif;
-  font-size:1.7rem;
+  font-size:clamp(1.15rem, 2vw, 1.55rem);
+  line-height:1.05;
   text-transform:uppercase;
+  word-break:break-word;
 }
 
 .metric span{
   display:block;
   margin-top:8px;
-  font-size:.82rem;
-  line-height:1.5;
+  font-size:.76rem;
+  line-height:1.55;
   text-transform:uppercase;
   font-family:"IBM Plex Mono",monospace;
+  text-wrap:pretty;
 }
 
 .hero-aside{
@@ -875,6 +896,10 @@ a{color:inherit}
   .gallery{
     grid-template-columns:repeat(2, 1fr);
   }
+
+  .hero-metrics{
+    grid-template-columns:1fr;
+  }
 }
 
 @media (max-width: 760px){
@@ -900,6 +925,20 @@ a{color:inherit}
     padding-top:34px;
   }
 
+  .hero-card{
+    padding:24px;
+  }
+
+  .hero-title{
+    font-size:clamp(2.2rem, 14vw, 4rem);
+    max-width:100%;
+  }
+
+  .hero-subtitle{
+    max-width:100%;
+    font-size:.98rem;
+  }
+
   .hero-card,
   .panel,
   .timeline-item,
@@ -914,6 +953,14 @@ a{color:inherit}
   .skill-strip,
   .gallery{
     grid-template-columns:1fr;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .button{
+    width:100%;
   }
 
   .window-grid{
