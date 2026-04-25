@@ -32,6 +32,9 @@
   --border-thin:2px solid #111111;
   --radius:0;
   --max:1180px;
+  --section-space:52px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --lift:-8px;
 }
 
 *,
@@ -51,6 +54,37 @@ body{
     repeating-linear-gradient(90deg, rgba(17,17,17,.045) 0 1px, transparent 1px 42px),
     var(--bg);
   overflow-x:hidden;
+  position:relative;
+}
+
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  inset:auto;
+  width:280px;
+  height:280px;
+  border:3px solid rgba(17,17,17,.08);
+  pointer-events:none;
+  z-index:0;
+  transform:rotate(12deg);
+}
+
+body::before{
+  top:110px;
+  right:-120px;
+  background:linear-gradient(135deg, rgba(255,216,77,.16), rgba(255,255,255,0));
+}
+
+body::after{
+  bottom:120px;
+  left:-120px;
+  background:linear-gradient(135deg, rgba(42,157,143,.14), rgba(255,255,255,0));
+}
+
+::selection{
+  background:var(--accent);
+  color:var(--ink);
 }
 
 img{max-width:100%;display:block}
@@ -59,6 +93,8 @@ a{color:inherit}
 .container{
   width:min(calc(100% - 32px), var(--max));
   margin:0 auto;
+  position:relative;
+  z-index:1;
 }
 
 .mono{
@@ -77,6 +113,7 @@ a{color:inherit}
   font-size:.82rem;
   text-transform:uppercase;
   letter-spacing:.08em;
+  transition:transform .28s var(--ease), box-shadow .28s var(--ease);
 }
 
 .dot{
@@ -94,6 +131,7 @@ a{color:inherit}
   background:rgba(244,239,230,.92);
   backdrop-filter:blur(8px);
   border-bottom:var(--border-thin);
+  box-shadow:0 8px 24px rgba(17,17,17,.06);
 }
 
 .topbar-inner{
@@ -109,6 +147,7 @@ a{color:inherit}
   align-items:center;
   gap:12px;
   text-decoration:none;
+  transition:transform .28s var(--ease);
 }
 
 .brand-mark{
@@ -121,6 +160,7 @@ a{color:inherit}
   box-shadow:var(--shadow-soft);
   font-family:"Archivo Black",sans-serif;
   font-size:1.1rem;
+  transition:transform .28s var(--ease), box-shadow .28s var(--ease);
 }
 
 .brand-copy strong{
@@ -150,10 +190,11 @@ a{color:inherit}
   font-family:"IBM Plex Mono",monospace;
   font-size:.8rem;
   text-transform:uppercase;
+  transition:transform .24s var(--ease), background .24s var(--ease), box-shadow .24s var(--ease);
 }
 
 .hero{
-  padding:42px 0 28px;
+  padding:54px 0 34px;
 }
 
 .hero-grid{
@@ -167,14 +208,18 @@ a{color:inherit}
 .panel,
 .timeline-item,
 .gallery-card,
-.contact-card{
+.contact-card,
+.project-note,
+.list-card,
+.project-main{
   border:var(--border);
   background:var(--card);
   box-shadow:var(--shadow);
+  transition:transform .32s var(--ease), box-shadow .32s var(--ease), background .32s var(--ease);
 }
 
 .hero-card{
-  padding:28px;
+  padding:32px;
   position:relative;
   overflow:hidden;
 }
@@ -186,6 +231,14 @@ a{color:inherit}
   width:220px;
   height:220px;
   background:radial-gradient(circle, rgba(255,216,77,.45), rgba(255,216,77,0));
+  pointer-events:none;
+}
+
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.12), transparent 42%);
   pointer-events:none;
 }
 
@@ -207,10 +260,10 @@ a{color:inherit}
 }
 
 .hero-subtitle{
-  margin:18px 0 0;
+  margin:22px 0 0;
   max-width:58ch;
-  font-size:1.08rem;
-  line-height:1.75;
+  font-size:1.09rem;
+  line-height:1.9;
 }
 
 .hero-highlight{
@@ -220,7 +273,7 @@ a{color:inherit}
 }
 
 .hero-actions{
-  margin-top:26px;
+  margin-top:30px;
   display:flex;
   flex-wrap:wrap;
   gap:14px;
@@ -232,13 +285,14 @@ a{color:inherit}
   border:var(--border-thin);
   box-shadow:var(--shadow-soft);
   font-weight:800;
+  transition:transform .24s var(--ease), box-shadow .24s var(--ease), background .24s var(--ease);
 }
 
 .button.primary{background:var(--accent)}
 .button.secondary{background:var(--paper)}
 
 .hero-metrics{
-  margin-top:28px;
+  margin-top:34px;
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:14px;
@@ -248,6 +302,7 @@ a{color:inherit}
   padding:16px;
   border:var(--border-thin);
   background:#fff7d6;
+  transition:transform .24s var(--ease), background .24s var(--ease), box-shadow .24s var(--ease);
 }
 
 .metric strong{
@@ -284,6 +339,19 @@ a{color:inherit}
   background:
     radial-gradient(circle, rgba(17,17,17,.18) 1.4px, transparent 1.5px) 0 0/12px 12px,
     #faf8f2;
+  overflow:hidden;
+}
+
+.window-stack::after{
+  content:"";
+  position:absolute;
+  inset:20px auto auto 20px;
+  width:76px;
+  height:76px;
+  background:rgba(255,107,44,.12);
+  border:var(--border-thin);
+  transform:rotate(-8deg);
+  animation:floatCard 5.5s ease-in-out infinite;
 }
 
 .window-label{
@@ -304,6 +372,8 @@ a{color:inherit}
   border:var(--border);
   background:#fff;
   box-shadow:10px 10px 0 #111;
+  transform:rotate(-1.2deg);
+  animation:floatPanel 6s ease-in-out infinite;
 }
 
 .window-bar{
@@ -338,6 +408,7 @@ a{color:inherit}
   background:#fff;
   text-align:center;
   box-shadow:6px 6px 0 #111;
+  transform:translateY(0);
 }
 
 .window-name strong{
@@ -373,6 +444,7 @@ a{color:inherit}
   font-family:"IBM Plex Mono",monospace;
   font-weight:700;
   text-transform:uppercase;
+  transition:transform .24s var(--ease), background .24s var(--ease);
 }
 
 .mini-panels{
@@ -382,7 +454,7 @@ a{color:inherit}
 }
 
 .panel{
-  padding:22px;
+  padding:24px;
 }
 
 .panel h2,
@@ -397,7 +469,7 @@ a{color:inherit}
 .panel p,
 .section-copy{
   margin:0;
-  line-height:1.8;
+  line-height:1.9;
   font-size:1rem;
 }
 
@@ -416,6 +488,7 @@ a{color:inherit}
   font-family:"IBM Plex Mono",monospace;
   font-size:.82rem;
   background:#fff;
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease);
 }
 
 .chip:nth-child(4n+1){background:#fff1b8}
@@ -424,7 +497,8 @@ a{color:inherit}
 .chip:nth-child(4n+4){background:#f8d6df}
 
 .section{
-  padding:34px 0;
+  padding:var(--section-space) 0;
+  position:relative;
 }
 
 .section-head{
@@ -432,22 +506,48 @@ a{color:inherit}
   justify-content:space-between;
   align-items:end;
   gap:24px;
-  margin-bottom:20px;
+  margin-bottom:28px;
 }
 
 .section-head p{
   max-width:58ch;
   margin:0;
-  line-height:1.8;
+  line-height:1.9;
+}
+
+.section:nth-of-type(odd) .section-head{
+  position:relative;
+}
+
+.section:nth-of-type(odd) .section-head::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-14px;
+  width:96px;
+  height:10px;
+  background:var(--accent);
+  border:var(--border-thin);
+  box-shadow:var(--shadow-soft);
 }
 
 .timeline{
   display:grid;
-  gap:18px;
+  gap:22px;
 }
 
 .timeline-item{
-  padding:22px;
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:12px;
+  background:linear-gradient(180deg, var(--accent), var(--accent-2));
 }
 
 .timeline-top{
@@ -498,6 +598,7 @@ a{color:inherit}
   color:#fff;
   box-shadow:var(--shadow);
   overflow:hidden;
+  position:relative;
 }
 
 .project-main img{
@@ -505,10 +606,12 @@ a{color:inherit}
   aspect-ratio:16/9;
   object-fit:cover;
   border-bottom:var(--border-thin);
+  transition:transform .6s var(--ease), filter .6s var(--ease);
 }
 
 .project-body{
-  padding:22px;
+  padding:24px;
+  position:relative;
 }
 
 .project-body h3{
@@ -526,13 +629,10 @@ a{color:inherit}
 
 .project-aside{
   display:grid;
-  gap:18px;
+  gap:20px;
 }
 
 .project-note{
-  border:var(--border);
-  background:#fffdf8;
-  box-shadow:var(--shadow);
   padding:20px;
 }
 
@@ -551,7 +651,7 @@ a{color:inherit}
 .gallery{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:18px;
+  gap:20px;
 }
 
 .gallery-card{
@@ -563,10 +663,11 @@ a{color:inherit}
   aspect-ratio:16/10;
   object-fit:cover;
   border-bottom:var(--border-thin);
+  transition:transform .6s var(--ease), filter .6s var(--ease);
 }
 
 .gallery-copy{
-  padding:14px 16px 18px;
+  padding:16px 18px 20px;
 }
 
 .gallery-copy strong{
@@ -589,12 +690,7 @@ a{color:inherit}
   gap:24px;
 }
 
-.list-card{
-  border:var(--border);
-  background:#fff;
-  box-shadow:var(--shadow);
-  padding:22px;
-}
+.list-card{padding:24px}
 
 .list-card h3{
   margin:0 0 14px;
@@ -616,11 +712,25 @@ a{color:inherit}
 }
 
 .contact-card{
-  padding:24px;
+  padding:26px;
+  position:relative;
+  overflow:hidden;
 }
 
 .contact-card p{
-  line-height:1.8;
+  line-height:1.9;
+}
+
+.contact-card::after{
+  content:"";
+  position:absolute;
+  right:-24px;
+  bottom:-24px;
+  width:120px;
+  height:120px;
+  border:var(--border-thin);
+  background:rgba(255,216,77,.16);
+  transform:rotate(12deg);
 }
 
 .contact-links{
@@ -637,10 +747,11 @@ a{color:inherit}
   background:#fff;
   box-shadow:var(--shadow-soft);
   font-weight:700;
+  transition:transform .24s var(--ease), box-shadow .24s var(--ease), background .24s var(--ease);
 }
 
 .footer{
-  padding:20px 0 48px;
+  padding:28px 0 56px;
 }
 
 .footer-box{
@@ -662,6 +773,96 @@ a{color:inherit}
   color:rgba(255,255,255,.82);
 }
 
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.hero-card.reveal,
+.banner-panel.reveal{
+  transform:translateY(40px) scale(.985);
+}
+
+.hero-card.reveal.is-visible,
+.banner-panel.reveal.is-visible{
+  transform:translateY(0) scale(1);
+}
+
+.brand:hover,
+.stamp:hover,
+.nav a:hover,
+.button:hover,
+.chip:hover,
+.metric:hover,
+.skill-strip div:hover,
+.contact-links a:hover,
+.contact-links div:hover{
+  transform:translate(var(--lift), var(--lift));
+}
+
+.brand:hover .brand-mark,
+.nav a:hover,
+.button:hover,
+.chip:hover,
+.metric:hover,
+.skill-strip div:hover,
+.contact-links a:hover,
+.contact-links div:hover{
+  box-shadow:12px 12px 0 #111;
+}
+
+.nav a:hover{background:#fff4bf}
+.button.primary:hover{background:#ffe37c}
+.button.secondary:hover{background:#fff3df}
+
+.panel:hover,
+.timeline-item:hover,
+.gallery-card:hover,
+.contact-card:hover,
+.project-note:hover,
+.list-card:hover,
+.project-main:hover{
+  transform:translate(var(--lift), var(--lift));
+  box-shadow:16px 16px 0 #111;
+}
+
+.project-main:hover img,
+.gallery-card:hover img{
+  transform:scale(1.04);
+  filter:saturate(1.06) contrast(1.02);
+}
+
+@keyframes floatPanel{
+  0%,100%{transform:rotate(-1.2deg) translateY(0)}
+  50%{transform:rotate(.2deg) translateY(-8px)}
+}
+
+@keyframes floatCard{
+  0%,100%{transform:rotate(-8deg) translateY(0)}
+  50%{transform:rotate(-4deg) translateY(-10px)}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+    transition:none !important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+
 @media (max-width: 1040px){
   .hero-grid,
   .project-grid,
@@ -681,6 +882,10 @@ a{color:inherit}
     width:min(calc(100% - 20px), var(--max));
   }
 
+  :root{
+    --section-space:40px;
+  }
+
   .topbar-inner,
   .section-head,
   .timeline-top{
@@ -689,6 +894,10 @@ a{color:inherit}
 
   .nav{
     justify-content:flex-start;
+  }
+
+  .hero{
+    padding-top:34px;
   }
 
   .hero-card,
@@ -713,6 +922,15 @@ a{color:inherit}
 
   .window-name strong{
     font-size:2.2rem;
+  }
+
+  .section-head::after{
+    display:none;
+  }
+
+  body::before,
+  body::after{
+    display:none;
   }
 }
 </style>
@@ -740,7 +958,7 @@ a{color:inherit}
 <main id="topo">
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-card">
+      <div class="hero-card reveal">
         <div class="hero-kicker stamp"><span class="dot"></span>Disponível para estágio, trainee e colaboração técnica</div>
         <h1 class="hero-title">
           <span>Salomão</span>
@@ -773,7 +991,7 @@ a{color:inherit}
       </div>
 
       <aside class="hero-aside">
-        <div class="banner-panel hero-card">
+        <div class="banner-panel hero-card reveal">
           <div class="window-stack">
             <div class="window-label">github.com/sasal0519</div>
             <div class="window-main">
@@ -799,14 +1017,14 @@ a{color:inherit}
         </div>
 
         <div class="mini-panels">
-          <div class="panel">
+          <div class="panel reveal">
             <h2>Resumo</h2>
             <p>
               Atuo na interseção entre organização, execução e tecnologia. Tenho experiência profissional em ambiente
               administrativo e de projetos, e transformo essa base em soluções com código, estrutura e documentação.
             </p>
           </div>
-          <div class="panel">
+          <div class="panel reveal">
             <h2>Direção</h2>
             <p>
               Busco oportunidades em que engenharia e software conversem de forma prática: automação, análise de dados,
@@ -821,18 +1039,18 @@ a{color:inherit}
   <section class="section" id="sobre">
     <div class="container">
       <div class="section-head">
-        <div>
+        <div class="reveal">
           <div class="stamp">Sobre</div>
           <h2 class="section-title">Atuação profissional com base analítica e técnica</h2>
         </div>
-        <p>
+        <p class="reveal">
           Meu percurso começou na formação técnica e evoluiu para a engenharia, passando por operação administrativa,
           consultoria, coordenação de negócios e organização documental. Essa trajetória me deu uma base sólida para
           resolver problemas com método, clareza e senso de prioridade.
         </p>
       </div>
       <div class="split">
-        <div class="panel">
+        <div class="panel reveal">
           <h2>O que me diferencia</h2>
           <p class="section-copy">
             Tenho familiaridade com o ambiente real de trabalho, com prazos, processos, comunicação com equipe e necessidade
@@ -840,7 +1058,7 @@ a{color:inherit}
             sistemas mais úteis, operações mais claras e tarefas repetitivas mais eficientes.
           </p>
         </div>
-        <div class="panel">
+        <div class="panel reveal">
           <h2>Base técnica</h2>
           <div class="chip-row">
             <span class="chip">Python para engenharia e análise de dados</span>
@@ -860,18 +1078,18 @@ a{color:inherit}
   <section class="section" id="trajetoria">
     <div class="container">
       <div class="section-head">
-        <div>
+        <div class="reveal">
           <div class="stamp">Trajetória</div>
           <h2 class="section-title">Experiência e formação</h2>
         </div>
-        <p>
+        <p class="reveal">
           Minha formação une administração e engenharia química, enquanto minha experiência profissional reforça disciplina,
           organização, atendimento a demandas e visão de negócio.
         </p>
       </div>
 
       <div class="timeline">
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-top">
             <div>
               <h3 class="timeline-role">Arquivista</h3>
@@ -885,7 +1103,7 @@ a{color:inherit}
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-top">
             <div>
               <h3 class="timeline-role">Auxiliar Administrativo (SEMURB)</h3>
@@ -899,7 +1117,7 @@ a{color:inherit}
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-top">
             <div>
               <h3 class="timeline-role">Coordenador de Negócios / Consultor de Projetos</h3>
@@ -913,7 +1131,7 @@ a{color:inherit}
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-top">
             <div>
               <h3 class="timeline-role">Bacharel em Engenharia Química</h3>
@@ -927,7 +1145,7 @@ a{color:inherit}
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-top">
             <div>
               <h3 class="timeline-role">CST em Análise e Desenvolvimento de Sistemas</h3>
@@ -941,7 +1159,7 @@ a{color:inherit}
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-top">
             <div>
               <h3 class="timeline-role">Técnico em Administração</h3>
@@ -960,18 +1178,18 @@ a{color:inherit}
   <section class="section" id="projeto">
     <div class="container">
       <div class="section-head">
-        <div>
+        <div class="reveal">
           <div class="stamp">Projeto em destaque</div>
           <h2 class="section-title">ProEng, meu primeiro projeto</h2>
         </div>
-        <p>
+        <p class="reveal">
           O ProEng marca minha entrada prática no desenvolvimento de software. É uma suíte visual para engenharia e gestão,
           criada para transformar necessidades técnicas em uma ferramenta concreta, navegável e útil.
         </p>
       </div>
 
       <div class="project-grid">
-        <article class="project-main">
+        <article class="project-main reveal">
           <img src="assets/images/welcome_solar.png" alt="Tela inicial do ProEng com identidade visual neo-brutalista.">
           <div class="project-body">
             <h3>Software com assinatura própria</h3>
@@ -984,7 +1202,7 @@ a{color:inherit}
         </article>
 
         <aside class="project-aside">
-          <div class="project-note">
+          <div class="project-note reveal">
             <h4>O que o projeto evidencia</h4>
             <ul>
               <li>Capacidade de aprender construindo.</li>
@@ -993,7 +1211,7 @@ a{color:inherit}
               <li>Conexão entre engenharia, documentação e software.</li>
             </ul>
           </div>
-          <div class="project-note">
+          <div class="project-note reveal">
             <h4>Tecnologias e repertório</h4>
             <ul>
               <li>Python como linguagem principal.</li>
@@ -1010,52 +1228,52 @@ a{color:inherit}
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <div>
+        <div class="reveal">
           <div class="stamp">Galeria do ProEng</div>
           <h2 class="section-title">Evidência visual do trabalho</h2>
         </div>
-        <p>
+        <p class="reveal">
           As telas abaixo mostram partes do projeto e reforçam a linguagem visual neobrutalista que também orienta este portfólio.
         </p>
       </div>
 
       <div class="gallery">
-        <article class="gallery-card">
+        <article class="gallery-card reveal">
           <img src="assets/images/flowsheet_solar.png" alt="Tela do módulo Flowsheet do ProEng.">
           <div class="gallery-copy">
             <strong>Flowsheet</strong>
             <span>Modelagem visual de processos e raciocínio técnico aplicado à engenharia.</span>
           </div>
         </article>
-        <article class="gallery-card">
+        <article class="gallery-card reveal">
           <img src="assets/images/bpmn_solar.png" alt="Tela do módulo BPMN do ProEng.">
           <div class="gallery-copy">
             <strong>BPMN</strong>
             <span>Organização de fluxos, etapas e dependências com clareza visual.</span>
           </div>
         </article>
-        <article class="gallery-card">
+        <article class="gallery-card reveal">
           <img src="assets/images/canvas_solar.png" alt="Tela do módulo Canvas do ProEng.">
           <div class="gallery-copy">
             <strong>Canvas</strong>
             <span>Planejamento estruturado, visão sistêmica e apoio à decisão.</span>
           </div>
         </article>
-        <article class="gallery-card">
+        <article class="gallery-card reveal">
           <img src="assets/images/kanban_solar.png" alt="Tela do módulo Kanban do ProEng.">
           <div class="gallery-copy">
             <strong>Kanban</strong>
             <span>Gestão visual de tarefas e acompanhamento operacional.</span>
           </div>
         </article>
-        <article class="gallery-card">
+        <article class="gallery-card reveal">
           <img src="assets/images/pdca_solar.png" alt="Tela do módulo PDCA do ProEng.">
           <div class="gallery-copy">
             <strong>PDCA</strong>
             <span>Melhoria contínua, organização de etapas e foco em execução.</span>
           </div>
         </article>
-        <article class="gallery-card">
+        <article class="gallery-card reveal">
           <img src="assets/images/script_solar.png" alt="Tela do módulo Script do ProEng.">
           <div class="gallery-copy">
             <strong>Script</strong>
@@ -1069,18 +1287,18 @@ a{color:inherit}
   <section class="section" id="habilidades">
     <div class="container">
       <div class="section-head">
-        <div>
+        <div class="reveal">
           <div class="stamp">Habilidades</div>
           <h2 class="section-title">Competências técnicas e profissionais</h2>
         </div>
-        <p>
+        <p class="reveal">
           Minha base mistura capacidade analítica, organização, comunicação e aprendizado técnico contínuo, com atenção especial
           ao uso de programação para resolver problemas de trabalho.
         </p>
       </div>
 
       <div class="split">
-        <div class="list-card">
+        <div class="list-card reveal">
           <h3>Programação e ferramentas</h3>
           <ul>
             <li>Python para resolução de problemas de engenharia e análise de dados.</li>
@@ -1090,7 +1308,7 @@ a{color:inherit}
             <li>Pacote Office com foco em Word e Excel.</li>
           </ul>
         </div>
-        <div class="list-card">
+        <div class="list-card reveal">
           <h3>Competências profissionais</h3>
           <ul>
             <li>Planejamento e organização para cumprimento de prazos.</li>
@@ -1106,7 +1324,7 @@ a{color:inherit}
 
   <section class="section">
     <div class="container split">
-      <div class="list-card">
+      <div class="list-card reveal">
         <h3>Certificações</h3>
         <ul>
           <li>Lean Seis Sigma Yellow Belt</li>
@@ -1118,7 +1336,7 @@ a{color:inherit}
           <li>Microsoft Excel 2016 — Avançado</li>
         </ul>
       </div>
-      <div class="list-card">
+      <div class="list-card reveal">
         <h3>Idiomas e objetivo</h3>
         <ul>
           <li>Português: língua materna</li>
@@ -1132,7 +1350,7 @@ a{color:inherit}
 
   <section class="section" id="contato">
     <div class="container contact-grid">
-      <div class="contact-card">
+      <div class="contact-card reveal">
         <div class="stamp">Contato</div>
         <h2 class="section-title">Vamos construir algo útil</h2>
         <p>
@@ -1141,7 +1359,7 @@ a{color:inherit}
           ou transformar uma necessidade técnica em software, essa conversa faz sentido para mim.
         </p>
       </div>
-      <div class="contact-card">
+      <div class="contact-card reveal">
         <div class="contact-links">
           <a href="mailto:salomaostenioferreira@gmail.com">salomaostenioferreira@gmail.com</a>
           <div>+55 84 98107-6863</div>
@@ -1162,5 +1380,23 @@ a{color:inherit}
     </div>
   </div>
 </footer>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.16,
+  rootMargin: "0px 0px -40px 0px"
+});
+
+document.querySelectorAll(".reveal").forEach((element, index) => {
+  element.style.transitionDelay = `${Math.min(index * 45, 260)}ms`;
+  observer.observe(element);
+});
+</script>
 </body>
 </html>
