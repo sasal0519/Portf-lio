@@ -485,6 +485,9 @@ a{color:inherit}
 
 .panel{
   padding:24px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
 }
 
 .panel h2,
@@ -545,6 +548,10 @@ a{color:inherit}
 
 .section-head > div{
   flex:1 1 540px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:18px;
 }
 
 .section-head p{
@@ -652,6 +659,9 @@ a{color:inherit}
 .project-body{
   padding:24px;
   position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
 }
 
 .project-body h3{
@@ -674,6 +684,9 @@ a{color:inherit}
 
 .project-note{
   padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
 }
 
 .project-note h4{
@@ -701,7 +714,13 @@ a{color:inherit}
 .gallery-card img{
   width:100%;
   aspect-ratio:16/10;
-  object-fit:cover;
+  object-fit:contain;
+  object-position:center;
+  background:
+    linear-gradient(135deg, rgba(255,216,77,.18), rgba(255,255,255,.92)),
+    repeating-linear-gradient(0deg, rgba(17,17,17,.05) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(90deg, rgba(17,17,17,.05) 0 1px, transparent 1px 22px),
+    #f8f5ee;
   border-bottom:var(--border-thin);
   transition:transform .6s var(--ease), filter .6s var(--ease);
 }
@@ -730,7 +749,12 @@ a{color:inherit}
   gap:24px;
 }
 
-.list-card{padding:24px}
+.list-card{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
 
 .list-card h3{
   margin:0 0 22px;
@@ -755,6 +779,9 @@ a{color:inherit}
   padding:26px;
   position:relative;
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
 }
 
 .contact-card p{
@@ -763,6 +790,27 @@ a{color:inherit}
 
 .contact-card .stamp{
   margin-bottom:18px;
+}
+
+.section-head .stamp{
+  margin-bottom:2px;
+}
+
+.panel .stamp,
+.project-body .stamp,
+.project-note .stamp,
+.list-card .stamp,
+.contact-card .stamp{
+  margin-bottom:18px;
+}
+
+.panel h2 + p,
+.panel h2 + .section-copy,
+.project-body h3 + p,
+.project-note h4 + ul,
+.list-card h3 + ul,
+.contact-card .section-title + p{
+  margin-top:6px;
 }
 
 .contact-card::after{
