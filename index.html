@@ -949,9 +949,13 @@ a{color:inherit}
   100%{background-position:200% 0}
 }
 .hero-highlight{
-  background:linear-gradient(90deg,var(--accent) 30%,#fff7a0 50%,var(--accent) 70%);
+  background:linear-gradient(90deg,var(--accent) 25%,#fff9c0 50%,var(--accent) 75%);
   background-size:200% auto;
   animation:shimmerSlide 2.8s linear infinite;
+  padding:.05em .22em;
+  box-shadow:3px 3px 0 var(--ink);
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
 }
 
 /* ── BRAND MARK ENTRANCE ── */
@@ -999,10 +1003,13 @@ a{color:inherit}
 
 /* ── TIMELINE BAR FILL ── */
 @keyframes barFill{
-  0%{transform:scaleY(0);transform-origin:top;}
-  100%{transform:scaleY(1);transform-origin:top;}
+  0%{transform:scaleY(0);}
+  100%{transform:scaleY(1);}
 }
-.timeline-item::before{transform:scaleY(0);transform-origin:top;}
+.timeline-item::before{
+  transform:scaleY(0);
+  transform-origin:top center;
+}
 .timeline-item.is-visible::before{animation:barFill .7s var(--ease) .1s both;}
 
 /* ── SKILL STRIP BOUNCE IN ── */
@@ -1045,37 +1052,26 @@ a{color:inherit}
   transform:translateY(0) scale(1);
 }
 
-/* ── CHIP WIGGLE ON HOVER ── */
-@keyframes chipWiggle{
-  0%,100%{transform:translate(-8px,-8px) rotate(0)}
-  33%{transform:translate(-8px,-8px) rotate(-3deg)}
-  66%{transform:translate(-8px,-8px) rotate(3deg)}
+/* ── CHIP HOVER: pop suave sem conflito com translate ── */
+.chip:hover{
+  transform:translate(var(--lift), var(--lift)) scale(1.04);
 }
-.chip:hover{animation:chipWiggle .4s var(--ease) both;}
 
 /* ── HERO CARD MOUSE PARALLAX ── */
 .hero-card{transition:transform .32s var(--ease),box-shadow .32s var(--ease),background .32s var(--ease);}
 
-/* ── CONTACT LINK SLIDE ── */
+/* ── CONTACT LINK SLIDE — background sweep sem cobrir texto ── */
 .contact-links a,
 .contact-links div{
   position:relative;
   overflow:hidden;
+  transition:transform .24s var(--ease), box-shadow .24s var(--ease), background .28s var(--ease), color .28s var(--ease);
 }
-.contact-links a::before,
-.contact-links div::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:var(--accent);
-  transform:translateX(-102%);
-  transition:transform .3s var(--ease);
-  z-index:0;
+.contact-links a:hover,
+.contact-links div:hover{
+  background:var(--accent) !important;
+  color:var(--ink) !important;
 }
-.contact-links a:hover::before,
-.contact-links div:hover::before{transform:translateX(0);}
-.contact-links a > *,
-.contact-links div > *{position:relative;z-index:1;}
 
 /* ── FOOTER PULSE ── */
 @keyframes footerGlow{
@@ -1183,6 +1179,249 @@ a{color:inherit}
   body::after{
     display:none;
   }
+}
+
+/* ════════════════════════════════════════
+   AJUSTE FINO — OVERFLOW, LAYOUT, ESPAÇO
+   ════════════════════════════════════════ */
+
+/* Flex/grid filhos: nunca estourar o container */
+.topbar-inner > *,
+.timeline-top > *,
+.section-head > *,
+.hero-actions > *{ min-width:0; }
+
+/* ── HERO TITLE: max-width mais folgado ── */
+.hero-title{
+  max-width:min(100%, 10ch);
+}
+
+/* ── HERO KICKER: mantém inline-flex do .stamp, só controla wrap ── */
+.hero-kicker{
+  flex-wrap:wrap;
+  row-gap:6px;
+  line-height:1.5;
+  max-width:min(100%, 44rem);
+  align-items:center;
+  white-space:normal;
+}
+
+/* ── TOPBAR: brand encolhe, nav não estoura ── */
+.brand{ flex-shrink:0; }
+.brand-copy{ min-width:0; }
+.brand-copy strong{ white-space:nowrap; }
+.brand-copy span{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:30ch;
+}
+.nav{ align-items:center; }
+.nav a{ white-space:nowrap; }
+
+/* ── SECTION-HEAD: colapsar em coluna em telas médias ── */
+@media (max-width: 900px){
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .section-head p{ max-width:100%; }
+  /* manter a barra decorativa alinhada ao título */
+  .section:nth-of-type(odd) .section-head::after{
+    bottom:-12px;
+  }
+}
+
+/* ── TIMELINE: impedir colisão role × data ── */
+.timeline-top{
+  align-items:flex-start;
+  gap:12px;
+}
+.timeline-top > div:first-child{
+  flex:1 1 0;
+  min-width:0;
+}
+.timeline-role{
+  overflow-wrap:break-word;
+  word-break:break-word;
+  line-height:1.25;
+}
+.timeline-date{
+  flex-shrink:0;
+  white-space:nowrap;
+  align-self:flex-start;
+}
+.timeline-item ul{ margin-top:14px; }
+
+/* ── CONTACT: e-mail longo nunca estoura ── */
+.contact-links a,
+.contact-links div{
+  word-break:break-all;
+  overflow-wrap:anywhere;
+  hyphens:auto;
+  font-size:clamp(.82rem, 1.4vw, 1rem);
+  line-height:1.4;
+}
+
+/* ── PROJECT BODY: título responsivo ── */
+.project-body h3{
+  font-size:clamp(1.4rem, 3.5vw, 2rem);
+  overflow-wrap:break-word;
+  hyphens:auto;
+  line-height:1.05;
+}
+
+/* ── SKILL STRIP: texto cabe mesmo estreito ── */
+.skill-strip div{
+  font-size:clamp(.68rem, 1.4vw, .9rem);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  padding:10px 6px;
+}
+
+/* ── WINDOW NAME: nunca estoura o card ── */
+.window-name strong{
+  overflow-wrap:break-word;
+  hyphens:auto;
+  word-break:break-word;
+}
+.window-name span{
+  font-size:clamp(.72rem, 1.5vw, .92rem);
+  word-break:break-word;
+}
+
+/* ── PANEL h2: linha-base mais folgada ── */
+.panel h2{
+  font-size:clamp(1.4rem, 2.5vw, 2rem);
+  line-height:1.05;
+  margin-bottom:12px;
+  overflow-wrap:break-word;
+}
+
+/* ── SECTION TITLE: overflow seguro ── */
+.section-title{
+  overflow-wrap:break-word;
+  hyphens:auto;
+  word-break:break-word;
+}
+
+/* ── GALLERY COPY: sem overflow de descrição ── */
+.gallery-copy span{
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+
+/* ── LIST: itens longos não estouram ── */
+.list-card li,
+.project-note li{
+  overflow-wrap:break-word;
+  word-break:break-word;
+  line-height:1.75;
+}
+
+/* ── METRIC: texto da label mais legível ── */
+.metric{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.metric strong{
+  font-size:clamp(.9rem, 1.5vw, 1.25rem);
+  line-height:1.15;
+}
+.metric span{
+  font-size:clamp(.68rem, 1vw, .75rem);
+  line-height:1.55;
+}
+
+/* ── TOPBAR: sumir o subtítulo do brand em telas médias ── */
+@media (max-width: 640px){
+  .brand-copy span{ display:none; }
+  .topbar-inner{ padding:8px 0; min-height:60px; }
+  .nav a{ padding:8px 10px; font-size:.72rem; }
+}
+
+/* ── WINDOW MAIN: nunca vaza na aside ── */
+@media (max-width: 900px) and (min-width: 761px){
+  .window-main{ width:min(100%, 380px); }
+  .window-name strong{ font-size:clamp(1.4rem, 3vw, 2.4rem); }
+}
+
+/* ── PANEL h2 nos mini-panels: menor para caber sem esmagar o texto ── */
+.mini-panels .panel h2{
+  font-size:clamp(1.3rem, 2.2vw, 1.8rem);
+  margin-bottom:10px;
+}
+
+/* ── SECTION-TITLE no card de contato: não precisa ser enorme ── */
+.contact-card .section-title{
+  font-size:clamp(1.5rem, 2.8vw, 2.2rem);
+  margin-bottom:14px;
+  line-height:1.05;
+}
+
+/* ── TOPBAR: nav encolhe antes de quebrar linha ── */
+@media (max-width: 860px) and (min-width: 641px){
+  .nav a{ font-size:.72rem; padding:8px 10px; }
+  .brand-copy span{ display:none; }
+}
+
+/* ── SECTION-HEAD: baseline alinhada de forma mais limpa ── */
+.section-head{
+  align-items:flex-start;
+}
+
+/* ── HERO TITLE: clamp mais controlado ── */
+.hero-title{
+  font-size:clamp(2.6rem, 5.5vw, 5.2rem);
+}
+
+/* ── METRIC: altura mínima para manter grid uniforme ── */
+.metric{
+  min-height:80px;
+}
+
+/* ── WINDOW LABEL: nunca vaza ── */
+.window-label{
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* ── TIMELINE: padding-left compensa a barra lateral ── */
+.timeline-item{
+  padding-left:28px;
+}
+
+/* ── STAMP: nunca mais largo que o container pai ── */
+.stamp{
+  max-width:100%;
+}
+
+/* ── CHIP-ROW: gap um pouco maior para respirar ── */
+.chip-row{
+  gap:8px;
+  margin-top:4px;
+}
+
+/* ── PROJECT NOTE: consistência de altura ── */
+.project-note h4{
+  font-weight:800;
+  font-family:"Archivo Black",sans-serif;
+}
+
+/* ── GALLERY COPY: padding mais generoso ── */
+.gallery-copy{
+  padding:14px 16px 18px;
+}
+
+/* ── FOOTER: itens centrados no mobile ── */
+@media (max-width: 760px){
+  .footer-box{ align-items:flex-start; }
+  .mini-panels{ grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -1712,13 +1951,17 @@ document.querySelectorAll(".metric").forEach(el => metricObs.observe(el));
 /* ── 9. HERO CARD MOUSE PARALLAX ── */
 const heroCard = document.querySelector(".hero-card");
 if (heroCard) {
+  let parallaxReady = false;
+  heroCard.addEventListener("transitionend", () => { parallaxReady = true; }, {once:true});
   heroCard.addEventListener("mousemove", e => {
+    if (!parallaxReady) return;
     const rect = heroCard.getBoundingClientRect();
     const cx = (e.clientX - rect.left) / rect.width  - 0.5;
     const cy = (e.clientY - rect.top)  / rect.height - 0.5;
-    heroCard.style.transform = `perspective(900px) rotateY(${cx*6}deg) rotateX(${cy*-6}deg) translateZ(4px)`;
+    heroCard.style.transform = `perspective(900px) rotateY(${cx*5}deg) rotateX(${cy*-5}deg) translateZ(4px)`;
   });
   heroCard.addEventListener("mouseleave", () => {
+    if (!parallaxReady) return;
     heroCard.style.transform = "";
   });
 }
