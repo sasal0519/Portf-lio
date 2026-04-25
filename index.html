@@ -290,6 +290,7 @@ a{color:inherit}
   flex-wrap:wrap;
   gap:14px;
   align-items:stretch;
+  max-width:100%;
 }
 
 .button{
@@ -303,6 +304,7 @@ a{color:inherit}
   justify-content:center;
   text-align:center;
   max-width:100%;
+  overflow-wrap:anywhere;
   transition:transform .24s var(--ease), box-shadow .24s var(--ease), background .24s var(--ease);
 }
 
@@ -312,34 +314,41 @@ a{color:inherit}
 .hero-metrics{
   margin-top:34px;
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(auto-fit, minmax(165px, 1fr));
   gap:14px;
+  align-items:stretch;
 }
 
 .metric{
   padding:16px;
   border:var(--border-thin);
   background:#fff7d6;
+  min-width:0;
+  overflow:hidden;
   transition:transform .24s var(--ease), background .24s var(--ease), box-shadow .24s var(--ease);
 }
 
 .metric strong{
   display:block;
   font-family:"Archivo Black",sans-serif;
-  font-size:clamp(1.15rem, 2vw, 1.55rem);
-  line-height:1.05;
+  font-size:clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height:1.12;
   text-transform:uppercase;
+  overflow-wrap:anywhere;
   word-break:break-word;
+  hyphens:auto;
 }
 
 .metric span{
   display:block;
   margin-top:8px;
-  font-size:.76rem;
-  line-height:1.55;
+  font-size:.72rem;
+  line-height:1.6;
   text-transform:uppercase;
   font-family:"IBM Plex Mono",monospace;
   text-wrap:pretty;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
 .hero-aside{
@@ -820,7 +829,6 @@ a{color:inherit}
 .nav a:hover,
 .button:hover,
 .chip:hover,
-.metric:hover,
 .skill-strip div:hover,
 .contact-links a:hover,
 .contact-links div:hover{
@@ -851,6 +859,11 @@ a{color:inherit}
 .project-main:hover{
   transform:translate(var(--lift), var(--lift));
   box-shadow:16px 16px 0 #111;
+}
+
+.metric:hover{
+  transform:translate(-4px, -4px);
+  box-shadow:10px 10px 0 #111;
 }
 
 .project-main:hover img,
@@ -896,10 +909,6 @@ a{color:inherit}
   .gallery{
     grid-template-columns:repeat(2, 1fr);
   }
-
-  .hero-metrics{
-    grid-template-columns:1fr;
-  }
 }
 
 @media (max-width: 760px){
@@ -937,6 +946,10 @@ a{color:inherit}
   .hero-subtitle{
     max-width:100%;
     font-size:.98rem;
+  }
+
+  .hero-kicker{
+    font-size:.76rem;
   }
 
   .hero-card,
