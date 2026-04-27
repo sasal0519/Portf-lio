@@ -599,7 +599,7 @@ button:focus-visible,
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:16px;
+  gap:22px;
 }
 
 .section-head p{
@@ -1023,7 +1023,7 @@ button:focus-visible,
 }
 
 .section-head .stamp{
-  margin-bottom:2px;
+  margin-bottom:0;
 }
 
 .panel .stamp,
@@ -1420,7 +1420,7 @@ button:focus-visible,
   }
 
   :root{
-    --section-space:30px;
+    --section-space:24px;
   }
 
   .topbar,
@@ -1509,8 +1509,8 @@ button:focus-visible,
 
   .hero-subtitle{
     max-width:100%;
-    font-size:.95rem;
-    line-height:1.46;
+    font-size:.92rem;
+    line-height:1.38;
   }
 
   .hero-intro{
@@ -1526,20 +1526,20 @@ button:focus-visible,
   }
 
   .hero-actions{
-    margin-top:22px;
+    margin-top:18px;
     gap:10px;
     flex-direction:column;
   }
 
   .hero-links{
-    margin-top:14px;
-    gap:12px;
+    margin-top:12px;
+    gap:10px;
   }
 
   .hero-availability{
-    margin-top:12px;
-    font-size:.84rem;
-    line-height:1.42;
+    margin-top:10px;
+    font-size:.8rem;
+    line-height:1.34;
   }
 
   .hero-links a{
@@ -1553,7 +1553,7 @@ button:focus-visible,
   }
 
   .hero-metrics{
-    margin-top:18px;
+    margin-top:14px;
   }
 
   .hero-card,
@@ -1583,17 +1583,23 @@ button:focus-visible,
   }
 
   .section-head{
-    margin-bottom:16px;
-  }
-
-  .section-head > div{
+    margin-bottom:12px;
+    display:grid;
     gap:4px;
   }
 
+  .section-head > div{
+    flex:none;
+    gap:12px;
+  }
+
   .section-head p{
+    flex:none;
+    width:100%;
     max-width:none;
-    line-height:1.46;
-    font-size:.92rem;
+    margin-top:0;
+    line-height:1.38;
+    font-size:.88rem;
     padding-top:0;
     text-wrap:auto;
   }
@@ -1611,7 +1617,7 @@ button:focus-visible,
   .contact-grid,
   .mini-panels,
   .cta-panel{
-    gap:18px;
+    gap:14px;
   }
 
   .project-links{
@@ -1625,12 +1631,12 @@ button:focus-visible,
 
   .project-aside,
   .timeline{
-    gap:16px;
+    gap:14px;
   }
 
   .project-proof{
-    gap:14px;
-    margin-bottom:20px;
+    gap:10px;
+    margin-bottom:14px;
   }
 
   .project-proof-card{
@@ -1643,7 +1649,7 @@ button:focus-visible,
 
   .contact-links{
     margin-top:0;
-    gap:10px;
+    gap:8px;
     width:100%;
   }
 
@@ -1661,7 +1667,7 @@ button:focus-visible,
   .list-card h3,
   .project-note h4,
   .project-body h3{
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
 
   .panel p,
@@ -1670,7 +1676,7 @@ button:focus-visible,
   .project-note ul,
   .list-card ul,
   .contact-card p{
-    line-height:1.46;
+    line-height:1.38;
   }
 
   .section-head::after{
@@ -1737,21 +1743,26 @@ button:focus-visible,
   .list-card ul,
   .contact-card p,
   .project-proof-card p{
-    font-size:.9rem;
-    line-height:1.42;
+    font-size:.86rem;
+    line-height:1.34;
   }
 
   .hero-availability{
-    font-size:.8rem;
-    line-height:1.38;
+    font-size:.78rem;
+    line-height:1.3;
   }
 
   .section-head{
-    margin-bottom:14px;
+    margin-bottom:10px;
+    gap:3px;
   }
 
   .section-head > div{
-    gap:4px;
+    gap:10px;
+  }
+
+  .section-head p{
+    margin-top:0;
   }
 
   .hero-card,
