@@ -1696,6 +1696,7 @@ button:focus-visible,
   .project-proof{
     gap:10px;
     margin-bottom:14px;
+    grid-template-columns:1fr;
   }
 
   .project-proof-card{
