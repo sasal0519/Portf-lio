@@ -711,15 +711,22 @@ button:focus-visible,
 
 .project-grid{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
+  grid-template-columns:1fr 1.08fr;
   gap:24px;
+  align-items:stretch;
+}
+
+.project-main-stack{
+  display:grid;
+  gap:20px;
+  align-content:start;
 }
 
 .project-proof{
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:1fr;
   gap:16px;
-  margin-bottom:24px;
+  margin-bottom:0;
   align-items:stretch;
 }
 
@@ -806,7 +813,7 @@ button:focus-visible,
 }
 
 .project-links{
-  margin-top:auto;
+  margin-top:8px;
   display:flex;
   flex-wrap:wrap;
   gap:12px;
@@ -1415,7 +1422,6 @@ button:focus-visible,
 @media (max-width: 1040px){
   .hero-grid,
   .project-grid,
-  .project-proof,
   .opportunity-grid,
   .split,
   .contact-grid,
@@ -1666,6 +1672,10 @@ button:focus-visible,
   .contact-grid,
   .mini-panels,
   .cta-panel{
+    gap:14px;
+  }
+
+  .project-main-stack{
     gap:14px;
   }
 
@@ -1921,7 +1931,7 @@ button:focus-visible,
   }
 
   .mini-panels{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
     gap:18px;
   }
 
@@ -1980,17 +1990,18 @@ button:focus-visible,
   }
 
   .project-grid{
-    grid-template-columns:minmax(0, 1.08fr) minmax(280px, .92fr);
+    grid-template-columns:minmax(300px, .96fr) minmax(0, 1.04fr);
     gap:26px;
   }
 
-  .project-main{
-    min-height:100%;
+  .project-body{
+    min-height:auto;
+    justify-content:flex-start;
   }
 
-  .project-body{
-    min-height:100%;
-    justify-content:space-between;
+  .project-proof{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:12px;
   }
 
   .project-links{
@@ -2012,6 +2023,10 @@ button:focus-visible,
 
   .project-note{
     min-height:190px;
+  }
+
+  .project-main-stack{
+    min-height:100%;
   }
 
   .list-card{
