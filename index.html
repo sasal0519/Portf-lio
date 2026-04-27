@@ -224,6 +224,42 @@ a{color:inherit}
   transition:transform .32s var(--ease), box-shadow .32s var(--ease), background .32s var(--ease);
 }
 
+.panel,
+.gallery-card,
+.project-note,
+.list-card,
+.contact-card,
+.project-main{
+  position:relative;
+  isolation:isolate;
+}
+
+.panel::before,
+.gallery-card::before,
+.project-note::before,
+.list-card::before,
+.contact-card::before,
+.project-main::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,216,77,.18), transparent 38%);
+  opacity:0;
+  transition:opacity .28s var(--ease);
+  pointer-events:none;
+  z-index:0;
+}
+
+.panel > *,
+.gallery-card > *,
+.project-note > *,
+.list-card > *,
+.contact-card > *,
+.project-main > *{
+  position:relative;
+  z-index:1;
+}
+
 .hero-card{
   padding:32px;
   position:relative;
@@ -923,6 +959,15 @@ a{color:inherit}
   box-shadow:16px 16px 0 #111;
 }
 
+.panel:hover::before,
+.gallery-card:hover::before,
+.project-note:hover::before,
+.list-card:hover::before,
+.contact-card:hover::before,
+.project-main:hover::before{
+  opacity:1;
+}
+
 .metric:hover{
   transform:translate(-4px, -4px);
   box-shadow:10px 10px 0 #111;
@@ -954,6 +999,11 @@ a{color:inherit}
   }
 
   .reveal{
+    opacity:1;
+    transform:none;
+  }
+
+  .stagger-list li{
     opacity:1;
     transform:none;
   }
@@ -1486,6 +1536,17 @@ a{color:inherit}
 /* ── GALLERY COPY: padding mais generoso ── */
 .gallery-copy{
   padding:14px 16px 18px;
+}
+
+.stagger-list li{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .55s var(--ease), transform .55s var(--ease);
+}
+
+.stagger-list.is-visible li{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* ── FOOTER: itens centrados no mobile ── */
@@ -2059,6 +2120,56 @@ sections.forEach(s => navObs.observe(s));
 /* ── 11. GALLERY stagger override ── */
 document.querySelectorAll(".gallery-card").forEach((card, i) => {
   card.style.transitionDelay = `${i * 80}ms`;
+});
+
+/* ── 12. INTERACTIVE CARD GLOW + TILT ── */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!prefersReducedMotion) {
+  const interactiveCards = document.querySelectorAll(".panel, .gallery-card, .project-note, .list-card, .contact-card, .project-main");
+
+  interactiveCards.forEach((card) => {
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rx = ((y / rect.height) - 0.5) * -5;
+      const ry = ((x / rect.width) - 0.5) * 5;
+
+      card.style.setProperty("--mx", `${x}px`);
+      card.style.setProperty("--my", `${y}px`);
+      card.style.transform = `translate(-6px, -6px) perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.removeProperty("--mx");
+      card.style.removeProperty("--my");
+      card.style.transform = "";
+    });
+  });
+}
+
+/* ── 13. STAGGER LIST REVEAL ── */
+const staggerLists = document.querySelectorAll(".timeline-item ul, .project-note ul, .list-card ul");
+
+staggerLists.forEach((list) => {
+  list.classList.add("stagger-list");
+});
+
+const listObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.add("is-visible");
+    entry.target.querySelectorAll("li").forEach((item, index) => {
+      item.style.transitionDelay = `${index * 70}ms`;
+    });
+    listObs.unobserve(entry.target);
+  });
+}, { threshold: 0.35 });
+
+staggerLists.forEach((list) => {
+  listObs.observe(list);
 });
 </script>
 </body>
