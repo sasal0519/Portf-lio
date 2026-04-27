@@ -20,6 +20,10 @@
   --lift:-5px;
   --shadow-strong:12px 12px 0 #111111;
   --shadow-card-hover:13px 13px 0 #111111;
+  --card-padding:24px;
+  --card-gap:16px;
+  --card-text-size:1rem;
+  --card-text-line:1.72;
 }
 
 *,
@@ -297,7 +301,9 @@ button:focus-visible,
 .contact-card,
 .project-main,
 .project-proof-card,
-.opportunity-card{
+.opportunity-card,
+.timeline-item,
+.cta-panel{
   position:relative;
   isolation:isolate;
 }
@@ -327,7 +333,9 @@ button:focus-visible,
 .contact-card > *,
 .project-main > *,
 .project-proof-card > *,
-.opportunity-card > *{
+.opportunity-card > *,
+.timeline-item > *,
+.cta-panel > *{
   position:relative;
   z-index:1;
 }
@@ -532,10 +540,11 @@ button:focus-visible,
 }
 
 .panel{
-  padding:24px;
+  padding:var(--card-padding);
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  gap:var(--card-gap);
 }
 
 .panel h2,
@@ -553,8 +562,8 @@ button:focus-visible,
 .panel p,
 .section-copy{
   margin:0;
-  line-height:1.82;
-  font-size:1rem;
+  line-height:var(--card-text-line);
+  font-size:var(--card-text-size);
 }
 
 .chip-row{
@@ -634,10 +643,13 @@ button:focus-visible,
 }
 
 .timeline-item{
-  padding:24px;
+  padding:var(--card-padding);
   padding-left:28px;
   position:relative;
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:var(--card-gap);
 }
 
 .timeline-item::before{
@@ -692,9 +704,9 @@ button:focus-visible,
 }
 
 .timeline-item ul{
-  margin:14px 0 0;
+  margin:0;
   padding-left:20px;
-  line-height:1.8;
+  line-height:var(--card-text-line);
 }
 
 .project-grid{
@@ -713,11 +725,12 @@ button:focus-visible,
 
 .project-proof-card{
   background:#fffdfa;
-  padding:18px;
+  padding:var(--card-padding);
   min-height:100%;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
+  gap:var(--card-gap);
 }
 
 .project-proof-card:nth-child(2){
@@ -730,7 +743,6 @@ button:focus-visible,
 
 .project-proof-label{
   display:inline-flex;
-  margin-bottom:14px;
   padding:7px 10px;
   border:var(--border-thin);
   background:#111;
@@ -743,7 +755,7 @@ button:focus-visible,
 
 .project-proof-card p{
   margin:0;
-  line-height:1.75;
+  line-height:var(--card-text-line);
 }
 
 .project-main{
@@ -764,15 +776,16 @@ button:focus-visible,
 }
 
 .project-body{
-  padding:24px;
+  padding:var(--card-padding);
   position:relative;
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  gap:var(--card-gap);
 }
 
 .project-body h3{
-  margin:0 0 20px;
+  margin:0;
   font-family:"Archivo Black",sans-serif;
   font-size:clamp(1.4rem, 3.5vw, 2rem);
   text-transform:uppercase;
@@ -783,19 +796,24 @@ button:focus-visible,
 
 .project-body p{
   margin:0;
-  line-height:1.8;
+  line-height:var(--card-text-line);
   color:rgba(255,255,255,.88);
 }
 
+.project-copy{
+  display:grid;
+  gap:10px;
+}
+
 .project-links{
-  margin-top:20px;
+  margin-top:auto;
   display:flex;
   flex-wrap:wrap;
   gap:12px;
 }
 
 .project-tags{
-  margin-top:18px;
+  margin-top:2px;
   display:flex;
   flex-wrap:wrap;
   gap:10px;
@@ -819,14 +837,15 @@ button:focus-visible,
 }
 
 .project-note{
-  padding:20px;
+  padding:var(--card-padding);
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  gap:var(--card-gap);
 }
 
 .project-note h4{
-  margin:0 0 18px;
+  margin:0;
   font-size:1.12rem;
   font-weight:800;
   font-family:"Archivo Black",sans-serif;
@@ -836,7 +855,7 @@ button:focus-visible,
 .project-note ul{
   margin:0;
   padding-left:18px;
-  line-height:1.8;
+  line-height:var(--card-text-line);
 }
 
 .gallery{
@@ -909,11 +928,12 @@ button:focus-visible,
 
 .opportunity-card{
   background:#fffdfa;
-  padding:22px;
+  padding:var(--card-padding);
   min-height:100%;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
+  gap:var(--card-gap);
 }
 
 .opportunity-card:nth-child(2){
@@ -925,7 +945,7 @@ button:focus-visible,
 }
 
 .opportunity-card h3{
-  margin:0 0 14px;
+  margin:0;
   font-family:"Archivo Black",sans-serif;
   font-size:1.08rem;
   text-transform:uppercase;
@@ -934,17 +954,17 @@ button:focus-visible,
 
 .opportunity-card p{
   margin:0;
-  line-height:1.75;
+  line-height:var(--card-text-line);
 }
 
 .cta-panel{
   margin-top:24px;
-  padding:24px;
+  padding:var(--card-padding);
   background:#111;
   color:#fff;
   display:flex;
   justify-content:space-between;
-  gap:20px;
+  gap:24px;
   align-items:flex-start;
 }
 
@@ -977,14 +997,15 @@ button:focus-visible,
 }
 
 .list-card{
-  padding:24px;
+  padding:var(--card-padding);
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  gap:var(--card-gap);
 }
 
 .list-card h3{
-  margin:0 0 22px;
+  margin:0;
   font-family:"Archivo Black",sans-serif;
   font-size:1.5rem;
   text-transform:uppercase;
@@ -993,7 +1014,7 @@ button:focus-visible,
 .list-card ul{
   margin:0;
   padding-left:18px;
-  line-height:1.9;
+  line-height:var(--card-text-line);
 }
 
 .contact-grid{
@@ -1003,16 +1024,18 @@ button:focus-visible,
 }
 
 .contact-card{
-  padding:26px;
+  padding:var(--card-padding);
   position:relative;
   overflow:hidden;
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  gap:var(--card-gap);
 }
 
 .contact-card p{
-  line-height:1.9;
+  margin:0;
+  line-height:var(--card-text-line);
 }
 
 .contact-fit{
@@ -1056,7 +1079,13 @@ button:focus-visible,
 .project-note h4 + ul,
 .list-card h3 + ul,
 .contact-card .section-title + p{
-  margin-top:6px;
+  margin-top:0;
+}
+
+.panel p + p,
+.project-body p + p,
+.contact-card p + p{
+  margin-top:10px;
 }
 
 .contact-card::after{
@@ -1437,6 +1466,10 @@ button:focus-visible,
 
   :root{
     --section-space:24px;
+    --card-padding:16px;
+    --card-gap:12px;
+    --card-text-size:.92rem;
+    --card-text-line:1.5;
   }
 
   .topbar,
@@ -1625,7 +1658,7 @@ button:focus-visible,
   .list-card,
   .contact-card,
   .project-body{
-    padding:16px;
+    padding:var(--card-padding);
   }
 
   .project-grid,
@@ -1656,11 +1689,11 @@ button:focus-visible,
   }
 
   .project-proof-card{
-    padding:14px;
+    padding:var(--card-padding);
   }
 
   .project-proof-card p{
-    line-height:1.48;
+    line-height:var(--card-text-line);
   }
 
   .contact-links{
@@ -1692,7 +1725,7 @@ button:focus-visible,
   .project-note ul,
   .list-card ul,
   .contact-card p{
-    line-height:1.38;
+    line-height:var(--card-text-line);
   }
 
   .section-head::after{
@@ -1760,7 +1793,7 @@ button:focus-visible,
   .contact-card p,
   .project-proof-card p{
     font-size:.86rem;
-    line-height:1.34;
+    line-height:1.42;
   }
 
   .hero-availability{
@@ -1978,10 +2011,18 @@ button:focus-visible,
   }
 
   .project-note{
-    min-height:168px;
+    min-height:190px;
   }
 
   .list-card{
+    min-height:100%;
+  }
+
+  .project-proof-card,
+  .opportunity-card,
+  .contact-card,
+  .panel,
+  .timeline-item{
     min-height:100%;
   }
 
