@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curriculo | Salomao Felix</title>
+<style>
+  :root{
+    --ink:#111111;
+    --muted:#4a4a4a;
+    --line:#d9d4ca;
+    --paper:#fffdf8;
+    --accent:#e8b923;
+    --accent-soft:#f6efcf;
+  }
+
+  *{box-sizing:border-box}
+
+  @page{
+    size:A4;
+    margin:14mm;
+  }
+
+  body{
+    margin:0;
+    font-family:"Arial",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+  }
+
+  .page{
+    width:210mm;
+    min-height:297mm;
+    margin:0 auto;
+    padding:14mm;
+    background:var(--paper);
+  }
+
+  .top{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:18px;
+    align-items:start;
+    padding-bottom:14px;
+    border-bottom:2px solid var(--ink);
+  }
+
+  h1{
+    margin:0 0 8px;
+    font-size:28px;
+    line-height:1;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+
+  .role{
+    margin:0;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--muted);
+  }
+
+  .contact{
+    display:grid;
+    gap:6px;
+    font-size:12px;
+    line-height:1.45;
+    text-align:right;
+  }
+
+  .contact a{
+    color:inherit;
+    text-decoration:none;
+  }
+
+  .summary{
+    margin:14px 0 0;
+    font-size:13px;
+    line-height:1.55;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:18px;
+    margin-top:16px;
+  }
+
+  section{
+    margin-bottom:14px;
+  }
+
+  .section-title{
+    display:inline-block;
+    margin:0 0 8px;
+    padding:4px 8px;
+    background:var(--accent-soft);
+    border:1px solid var(--ink);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+
+  .block{
+    padding-top:2px;
+    border-top:1px solid var(--line);
+  }
+
+  .item{
+    margin-bottom:10px;
+  }
+
+  .item:last-child{
+    margin-bottom:0;
+  }
+
+  .item-head{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:baseline;
+    margin-bottom:3px;
+  }
+
+  .item-title{
+    margin:0;
+    font-size:13px;
+    line-height:1.35;
+    font-weight:700;
+  }
+
+  .item-date{
+    font-size:11px;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+
+  .item-subtitle{
+    margin:0 0 4px;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.4;
+  }
+
+  p{
+    margin:0;
+    font-size:12px;
+    line-height:1.5;
+  }
+
+  ul{
+    margin:4px 0 0 16px;
+    padding:0;
+  }
+
+  li{
+    margin:0 0 4px;
+    font-size:12px;
+    line-height:1.45;
+  }
+
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:6px;
+  }
+
+  .chip{
+    padding:4px 7px;
+    border:1px solid var(--line);
+    font-size:10px;
+    line-height:1.2;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    background:#fff;
+  }
+
+  .compact-list{
+    display:grid;
+    gap:4px;
+  }
+
+  .compact-list span{
+    font-size:12px;
+    line-height:1.4;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <header class="top">
+      <div>
+        <h1>Salomao Felix</h1>
+        <p class="role">Estudante de Engenharia Quimica | Python, Linux, Automacao e Processos</p>
+      </div>
+      <div class="contact">
+        <a href="mailto:salomaostenioferreira@gmail.com">salomaostenioferreira@gmail.com</a>
+        <span>+55 84 98107-6863</span>
+        <a href="https://www.linkedin.com/in/salom%C3%A3o-f%C3%A9lix-b4b492191/">linkedin.com/in/salomao-felix</a>
+        <a href="https://github.com/sasal0519">github.com/sasal0519</a>
+        <a href="https://sasal0519.github.io/proeng/">sasal0519.github.io/proeng</a>
+      </div>
+    </header>
+
+    <p class="summary">
+      Estudante de Engenharia Quimica na UFRN com experiencia em rotinas administrativas, organizacao documental e apoio a projetos.
+      Reuno disciplina operacional, visao de processo e evolucao tecnica orientada a problemas reais, com foco em Python, Linux,
+      automacao, documentacao e melhoria de processos.
+    </p>
+
+    <div class="grid">
+      <div>
+        <section>
+          <h2 class="section-title">Experiencia</h2>
+          <div class="block">
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">Arquivista</h3>
+                <span class="item-date">Mai 2025 - 2026</span>
+              </div>
+              <p class="item-subtitle">Prefeitura Municipal de Sao Jose de Mipibu</p>
+              <ul>
+                <li>Organizacao documental e controle de informacoes com foco em ordem, rastreabilidade e consistencia operacional.</li>
+                <li>Atuacao em processos que exigem padronizacao, atencao a detalhes e confiabilidade na execucao.</li>
+              </ul>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">Auxiliar Administrativo (SEMURB)</h3>
+                <span class="item-date">Fev 2024 - 2025</span>
+              </div>
+              <p class="item-subtitle">Prefeitura Municipal de Sao Jose de Mipibu</p>
+              <ul>
+                <li>Suporte a rotinas administrativas, organizacao de fluxo de trabalho e acompanhamento de demandas internas.</li>
+                <li>Contato direto com prazos, processos e necessidades operacionais do setor publico.</li>
+              </ul>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">Coordenador de Negocios / Consultor de Projetos</h3>
+                <span class="item-date">Mar 2022 - Dez 2022</span>
+              </div>
+              <p class="item-subtitle">NUTEQ | Natal, RN</p>
+              <ul>
+                <li>Atuacao consultiva e comercial com visao de negocio, comunicacao clara e organizacao de entregas.</li>
+                <li>Experiencia em projetos conectados a necessidades reais de clientes e operacao.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Projeto em Destaque</h2>
+          <div class="block">
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">ProEng</h3>
+                <span class="item-date">Projeto autoral</span>
+              </div>
+              <p>
+                Ferramenta autoral em Python criada para reunir modelagem, processos, planejamento e estrutura tecnica em um unico ambiente.
+                O projeto demonstra iniciativa, capacidade de aprender construindo, organizacao de escopo e preocupacao com utilidade pratica.
+              </p>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">Processos</span>
+                <span class="chip">Modelagem</span>
+                <span class="chip">Planejamento</span>
+                <span class="chip">Site proprio</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section>
+          <h2 class="section-title">Formacao</h2>
+          <div class="block">
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">Bacharelado em Engenharia Quimica</h3>
+                <span class="item-date">Em andamento</span>
+              </div>
+              <p class="item-subtitle">Universidade Federal do Rio Grande do Norte - UFRN</p>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">CST em Analise e Desenvolvimento de Sistemas</h3>
+                <span class="item-date">Mar 2026 - Dez 2027</span>
+              </div>
+              <p class="item-subtitle">Universidade Cruzeiro do Sul</p>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h3 class="item-title">Tecnico em Administracao</h3>
+                <span class="item-date">Concluido em Dez 2019</span>
+              </div>
+              <p class="item-subtitle">Escola Estadual Professor Francisco Barbosa</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Competencias Tecnicas</h2>
+          <div class="block compact-list">
+            <span>Python para analise, automacao e resolucao de problemas</span>
+            <span>Linux como ambiente principal de uso, estudo e producao</span>
+            <span>JavaScript, HTML e CSS para interfaces e apresentacao de projetos</span>
+            <span>Lua, LaTeX, Git e Bash como extensoes do fluxo de trabalho</span>
+            <span>Excel avancado, documentacao e organizacao de informacoes</span>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Competencias Profissionais</h2>
+          <div class="block compact-list">
+            <span>Planejamento e organizacao orientados a prazo e entrega</span>
+            <span>Comunicacao clara com equipe, fluxo e demanda real</span>
+            <span>Abordagem estruturada para resolucao de problemas</span>
+            <span>Disciplina operacional e senso de prioridade</span>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Certificacoes</h2>
+          <div class="block compact-list">
+            <span>Lean Seis Sigma Yellow Belt</span>
+            <span>Vendedor de Alta Performance</span>
+            <span>Fundamentos da Gestao de Projetos</span>
+            <span>Fundamentos da Gestao da Qualidade</span>
+            <span>Fundamentos da Gestao da Producao Industrial</span>
+            <span>Licenciamento Ambiental</span>
+            <span>Microsoft Excel 2016 - Avancado</span>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Idiomas e Objetivo</h2>
+          <div class="block compact-list">
+            <span>Portugues: lingua materna</span>
+            <span>Ingles: intermediario (B1)</span>
+            <span>Objetivo: atuar em funcoes tecnicas onde engenharia, organizacao e software se reforcem.</span>
+            <span>Interesse em estagio, trainee e colaboracoes tecnicas presenciais, remotas ou hibridas.</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
